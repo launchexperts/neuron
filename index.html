@@ -1,0 +1,525 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Neuron CRM — Turn Sales & Marketing Into a Predictable Growth Machine</title>
+<meta name="description" content="Neuron is an all-in-one marketing CRM that helps businesses capture, nurture and convert more customers without the chaos." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@700&display=swap" rel="stylesheet">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
+
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: {
+          sans: ['Inter', 'ui-sans-serif', 'system-ui'],
+          display: ['Poppins', 'Inter', 'ui-sans-serif'],
+        },
+        colors: {
+          ink:    { DEFAULT: '#0B0A1F', soft: '#1C1A3A', muted: '#5B5876' },
+          cream:  { DEFAULT: '#ffffff', deep: '#ffffff' },
+          brand:  { DEFAULT: '#6C5CE7', dark: '#4A3DC7', glow: '#A89BFF' },
+          accent: { DEFAULT: '#FFD166', warm: '#F4A261' },
+        },
+        boxShadow: {
+          soft: '0 10px 40px -10px rgba(11,10,31,0.15)',
+          ring: '0 0 0 1px rgba(11,10,31,0.06), 0 24px 48px -16px rgba(76,61,199,0.25)',
+        },
+        backgroundImage: {
+          'hero-radial':
+            'radial-gradient(circle at 50% 60%, #B7A8FF 0%, #8A77F2 22%, #6C5CE7 42%, #4A3DC7 65%, #1C1A3A 100%)',
+        },
+      },
+    },
+  };
+</script>
+
+<style>
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', system-ui, sans-serif; background:#ffffff; color:#000000; }
+  .font-display { font-family: 'Poppins', Inter, sans-serif; font-weight: 700; letter-spacing: -0.02em; }
+  .text-gradient {
+    background-image: linear-gradient(90deg, #ED3176 0%, #A232C8 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .btn-gradient-border {
+    color: #ffffff;
+    background:
+      radial-gradient(67.92% 107.63% at 50% 0%, rgba(77, 15, 152, 0) 43.66%, #B02971 100%) padding-box,
+      linear-gradient(0deg, #17002F, #17002F) padding-box,
+      linear-gradient(180deg, #99236E 0%, #FF77CD 100%) border-box;
+    border: 1px solid transparent;
+    box-shadow: 0 8px 16px 0 rgba(161, 9, 116, 0.25);
+    transition: filter .15s ease, transform .15s ease;
+  }
+  .btn-gradient-border:hover { filter: brightness(1.1); }
+  .ring-orbit {
+    border-radius: 9999px;
+    border: 1px solid rgba(255,255,255,0.18);
+    background: radial-gradient(circle at 50% 50%, transparent 60%, rgba(255,255,255,0.04) 100%);
+  }
+  .ring-orbit-light {
+    border-radius: 9999px;
+    border: 1px dashed rgba(108, 92, 231, 0.18);
+  }
+  details > summary { list-style: none; cursor: pointer; }
+  details > summary::-webkit-details-marker { display: none; }
+  details[open] .faq-plus { transform: rotate(45deg); }
+  .faq-plus { transition: transform .2s ease; }
+  .pill {
+    display: inline-flex; align-items: center; gap: .5rem;
+    padding: .5rem 1rem; border-radius: 999px;
+    background: rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.16);
+    color:#fff; font-weight:500; font-size:.875rem;
+  }
+  .pill.light {
+    background:#fff; border-color: rgba(11,10,31,0.08); color:#0B0A1F;
+    box-shadow: 0 2px 10px -2px rgba(11,10,31,0.08);
+  }
+  .pill-hero {
+    display: inline-flex; align-items: center; gap: .5rem;
+    padding: .5rem 1rem; border-radius: 999px;
+    color: #0B0A1F; font-weight: 500; font-size: .875rem;
+    background:
+      #ffffff padding-box,
+      radial-gradient(55.9% 106.83% at 97.42% 72.92%, #FF9245 0%, rgba(255, 146, 69, 0) 64.21%) border-box,
+      radial-gradient(68.27% 130.45% at 9.59% 31.25%, #CE2966 0%, rgba(206, 41, 102, 0) 64.21%) border-box,
+      linear-gradient(0deg, #DDD5E6, #DDD5E6) border-box;
+    border: 1px solid transparent;
+    box-shadow: 0 8px 24px 0 rgba(161, 9, 116, 0.1);
+  }
+  .card { background:#fff; border:1px solid rgba(11,10,31,0.06); border-radius: 24px; }
+  .card-soft {
+    background:#fff;
+    border: 1px solid #F3E4F4;
+    border-radius: 24px;
+    box-shadow: 0 16px 48px -15px rgba(59, 13, 48, 0.05);
+  }
+  .stat-chip {
+    display:inline-flex; align-items:center; gap:.5rem;
+    padding:.5rem .9rem; border-radius:999px; background:#F1ECE3;
+    border:1px solid rgba(11,10,31,0.06); font-size:.875rem;
+  }
+  .grid-bg {
+    background-image:
+      linear-gradient(rgba(11,10,31,.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(11,10,31,.05) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+</style>
+</head>
+
+<body class="antialiased">
+
+<!-- ====================== HERO ====================== -->
+<section class="relative overflow-hidden bg-white text-ink">
+  <!-- decorative gradient backdrop image -->
+  <img
+    src="gradient.png"
+    alt=""
+    aria-hidden="true"
+    class="pointer-events-none select-none absolute left-1/2 -translate-x-1/2 bottom-0 w-full max-w-none min-w-[1440px] z-0"
+  />
+
+  <!-- robot hand fixed to right side of viewport -->
+  <img
+    src="robot-hand.png"
+    alt=""
+    aria-hidden="true"
+    class="pointer-events-none select-none absolute right-0 bottom-96 w-[1000px] max-w-none h-auto z-20 drop-shadow-2xl"
+  />
+
+  <!-- hero copy + orb -->
+  <div class="relative z-10 max-w-6xl mx-auto px-6 lg:px-10 pt-24 pb-28 text-center">
+    <span class="pill-hero mb-7">
+      <i class="ph-fill ph-sparkle text-brand"></i>
+      More clarity. More conversions. Less manual work.
+    </span>
+
+    <h1 class="font-display text-4xl sm:text-5xl lg:text-7xl font-bold leading-[1.05] max-w-5xl mx-auto text-ink">
+      Turn Your Sales &amp; Marketing Into a <span class="text-gradient">Predictable Growth Machine</span> with Neuron CRM
+    </h1>
+
+    <p class="mt-7 max-w-2xl mx-auto text-ink-muted text-base sm:text-lg">
+      Stop losing leads, juggling tools and guessing what's working. Neuron gives you complete visibility and control over your pipeline so you can capture, nurture and convert more customers — without the chaos.
+    </p>
+
+    <div class="mt-10 flex items-center justify-center gap-3">
+      <a href="#cta" class="btn-gradient-border inline-flex items-center gap-2 rounded-full px-6 py-3.5 font-semibold">
+        Get Started <i class="ph-bold ph-arrow-right"></i>
+      </a>
+    </div>
+
+    <!-- radial group artwork -->
+    <div class="relative mx-auto -mt-64 w-[min(95vw,1080px)]">
+      <img src="radial-group.png" alt="" aria-hidden="true" class="w-full h-auto select-none pointer-events-none" />
+    </div>
+  </div>
+</section>
+
+<!-- ====================== WITHOUT NEURON ====================== -->
+<section class="relative bg-cream">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 py-24">
+    <div class="flex flex-col items-center text-center">
+      <span class="pill light mb-6">
+        <span class="inline-block h-1.5 w-1.5 rounded-full bg-red-500"></span>
+        Without Neuron?
+      </span>
+      <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-bold max-w-4xl">
+        You didn't start your business to juggle tools, chase leads, and guess your way through marketing.
+      </h2>
+    </div>
+
+    <div class="mt-14 grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+      <!-- card -->
+      <div class="card-soft p-7">
+        <img src="ph_smiley-sad.png" alt="" class="h-10 w-10 mb-5" />
+        <h3 class="font-display text-xl font-bold mb-2">Lost leads</h3>
+        <p class="text-ink-muted text-sm leading-relaxed">Leads come in… then slip through the cracks. Follow-ups get missed. Opportunities disappear.</p>
+      </div>
+      <div class="card-soft p-7">
+        <img src="ph_chart-line-down.png" alt="" class="h-10 w-10 mb-5" />
+        <h3 class="font-display text-xl font-bold mb-2">Low conversion</h3>
+        <p class="text-ink-muted text-sm leading-relaxed">You know you should be getting more clients, but your marketing isn't converting the way it should.</p>
+      </div>
+      <div class="card-soft p-7">
+        <img src="ph_mask-sad.png" alt="" class="h-10 w-10 mb-5" />
+        <h3 class="font-display text-xl font-bold mb-2">Overthinking</h3>
+        <p class="text-ink-muted text-sm leading-relaxed">You end up guessing, overthinking, or doing nothing at all because you aren't a marketing expert.</p>
+      </div>
+      <div class="card-soft p-7">
+        <img src="ph_battery-low.png" alt="" class="h-10 w-10 mb-5" />
+        <h3 class="font-display text-xl font-bold mb-2">Feeling stuck</h3>
+        <p class="text-ink-muted text-sm leading-relaxed">You aren't moving forward, you feel stuck. You're wasting time and money on tools that only do half the job.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== MEET NEURON ====================== -->
+<section id="features" class="bg-cream-deep">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 py-24 grid lg:grid-cols-2 gap-14 items-center">
+    <div>
+      <h2 class="font-display text-4xl sm:text-5xl font-bold leading-tight mb-6">Meet Neuron</h2>
+      <p class="text-ink-muted text-lg leading-relaxed mb-8">
+        Neuron is an all-in-one marketing CRM designed to help businesses scale without juggling a stack of expensive and disconnected tools. Instead of paying for a dozen subscriptions and trying to make them work together, Neuron brings everything into one simple system — so you can manage leads, marketing, and conversions in one place.
+      </p>
+      <div class="flex flex-wrap items-center gap-5">
+        <a href="#cta" class="btn-gradient-border inline-flex items-center gap-2 rounded-full px-6 py-3.5 font-semibold">
+          Get Started <i class="ph-bold ph-arrow-right"></i>
+        </a>
+        <div class="text-sm">
+          <div class="text-ink-muted">And it starts from just</div>
+          <div class="font-display text-2xl font-bold text-ink">$97<span class="text-base text-ink-muted font-medium">/month AUD</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- AI call illustration -->
+    <div class="relative">
+      <img src="ai-call.png" alt="AI call summary and auto-reply" width="666" height="569" class="w-full max-w-[666px] h-auto mx-auto" />
+    </div>
+  </div>
+</section>
+
+<!-- ====================== EVERYTHING GRID ====================== -->
+<section
+  id="everything"
+  style="background-image:
+    url('texture.png'),
+    linear-gradient(180deg, #FFFFFF 0%, rgba(255,255,255,0.2) 4.71%, rgba(255,255,255,0.2) 72.44%, #FFFFFF 100%),
+    linear-gradient(180deg, #FFFFFF 0%, #FFCDE0 27.59%, #F4C5FF 66%, #FFFFFF 100%);
+    background-blend-mode: overlay, normal, normal;"
+>
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 py-24">
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+      <div class="card-soft p-7">
+        <div class="h-12 w-12 rounded-xl bg-brand/10 text-brand flex items-center justify-center mb-5"><i class="ph-duotone ph-user-circle text-2xl"></i></div>
+        <h3 class="font-display text-xl font-bold mb-3">Client Management</h3>
+        <ul class="text-sm text-ink-muted space-y-1">
+          <li>Proposals + invoicing</li><li>Contracts + signatures</li><li>Calendars + bookings</li><li>Appointment reminders</li><li>Client portals</li>
+        </ul>
+      </div>
+      <div class="card-soft p-7">
+        <div class="h-12 w-12 rounded-xl bg-brand/10 text-brand flex items-center justify-center mb-5"><i class="ph-duotone ph-globe text-2xl"></i></div>
+        <h3 class="font-display text-xl font-bold mb-3">Website &amp; Blog</h3>
+        <ul class="text-sm text-ink-muted space-y-1">
+          <li>Website pages</li><li>Social links page</li><li>Blog pages + management</li><li>Widgets + pop-up forms</li><li>Website analytics</li>
+        </ul>
+      </div>
+      <div class="card-soft p-7">
+        <div class="h-12 w-12 rounded-xl bg-brand/10 text-brand flex items-center justify-center mb-5"><i class="ph-duotone ph-trophy text-2xl"></i></div>
+        <h3 class="font-display text-xl font-bold mb-3">Memberships</h3>
+        <ul class="text-sm text-ink-muted space-y-1">
+          <li>Free + paid courses</li><li>Free + paid communities</li><li>Community event calendar</li><li>Completion certificates</li><li>Leaderboards + gamification</li>
+        </ul>
+      </div>
+      <div class="card-soft p-7">
+        <div class="h-12 w-12 rounded-xl bg-brand/10 text-brand flex items-center justify-center mb-5"><i class="ph-duotone ph-shopping-bag text-2xl"></i></div>
+        <h3 class="font-display text-xl font-bold mb-3">Online Store</h3>
+        <ul class="text-sm text-ink-muted space-y-1">
+          <li>Sales pages + checkouts</li><li>Add to cart for shops</li><li>Bump offers + upsells</li><li>Recurring subscriptions</li><li>Failed billing reminders</li>
+        </ul>
+      </div>
+      <div class="card-soft p-7">
+        <div class="h-12 w-12 rounded-xl bg-brand/10 text-brand flex items-center justify-center mb-5"><i class="ph-duotone ph-funnel text-2xl"></i></div>
+        <h3 class="font-display text-xl font-bold mb-3">Funnel Builder</h3>
+        <ul class="text-sm text-ink-muted space-y-1">
+          <li>Landing + sales pages</li><li>Forms + surveys</li><li>Page countdown timers</li><li>Email sequences</li><li>Funnel tracking + analytics</li>
+        </ul>
+      </div>
+      <div class="card-soft p-7">
+        <div class="h-12 w-12 rounded-xl bg-brand/10 text-brand flex items-center justify-center mb-5"><i class="ph-duotone ph-brain text-2xl"></i></div>
+        <h3 class="font-display text-xl font-bold mb-3">Smart CRM</h3>
+        <ul class="text-sm text-ink-muted space-y-1">
+          <li>Contact database</li><li>Sales pipelines + dashboards</li><li>Follow ups + reminders</li><li>Lead scoring + values</li><li>Contact tags, lists + notes</li>
+        </ul>
+      </div>
+      <div class="card-soft p-7">
+        <div class="h-12 w-12 rounded-xl bg-brand/10 text-brand flex items-center justify-center mb-5"><i class="ph-duotone ph-chats text-2xl"></i></div>
+        <h3 class="font-display text-xl font-bold mb-3">Messaging</h3>
+        <ul class="text-sm text-ink-muted space-y-1">
+          <li>United social inboxes</li><li>Email marketing</li><li>Live chat widgets</li><li>Social media bots</li><li>SMS + phone (pay-as-you-go)</li>
+        </ul>
+      </div>
+      <div class="card-soft p-7">
+        <div class="h-12 w-12 rounded-xl bg-brand/10 text-brand flex items-center justify-center mb-5"><i class="ph-duotone ph-gauge text-2xl"></i></div>
+        <h3 class="font-display text-xl font-bold mb-3">Management</h3>
+        <ul class="text-sm text-ink-muted space-y-1">
+          <li>Automated dashboards</li><li>Social media scheduling</li><li>Workflows + automations</li><li>Reporting + analytics</li><li>Google + FB reviews</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 2x2 feature grid -->
+    <div class="grid sm:grid-cols-2 gap-5 mt-10">
+      <div class="card-soft p-8">
+        <h3 class="font-display text-3xl font-bold mb-4">The right message at the right time</h3>
+        <p class="text-ink-muted text-lg leading-relaxed mb-6">No more generic email blasts. Just perfectly-timed customer communications, generating sales automatically.</p>
+        <img src="automated-comms.png" alt="" width="600" height="467" class="w-full max-w-[600px] h-auto mx-auto" />
+      </div>
+      <div class="card-soft p-8">
+        <h3 class="font-display text-3xl font-bold mb-4">Intelligent booking system</h3>
+        <p class="text-ink-muted text-lg leading-relaxed mb-6">No more wasted time trying to schedule a booking. Send customers a link, and let them pick a time that works for both of you.</p>
+        <img src="calendar.png" alt="" width="552" height="486" class="w-full max-w-[552px] h-auto mx-auto" />
+      </div>
+      <div class="card-soft p-8">
+        <h3 class="font-display text-3xl font-bold mb-4">Know everything</h3>
+        <p class="text-ink-muted text-lg leading-relaxed mb-6">Laser-accurate marketing reports let you know exactly how profitable your marketing is — channel by channel, dollar by dollar.</p>
+        <img src="reports.png" alt="" width="585" height="457" class="w-full max-w-[585px] h-auto mx-auto" />
+      </div>
+      <div class="card-soft p-8">
+        <h3 class="font-display text-3xl font-bold mb-4">Grow reviews fast!</h3>
+        <p class="text-ink-muted text-lg leading-relaxed mb-6">More reviews = better SEO, more customers &amp; more sales! Automate your reviews and watch your revenue soar.</p>
+        <img src="reviews.png" alt="" width="585" height="515" class="w-full max-w-[585px] h-auto mx-auto" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== CONSOLIDATED COMMUNICATIONS ====================== -->
+<section class="relative overflow-hidden" style="background: linear-gradient(262.64deg, #A232C8 2%, #ED3176 98.09%), #FFFFFF;">
+  <div
+    class="absolute inset-0 pointer-events-none"
+    style="background-image: url('texture.png'); opacity: 0.25; mix-blend-mode: overlay;"
+  ></div>
+  <div class="relative max-w-7xl mx-auto px-6 lg:px-10 py-24 grid lg:grid-cols-2 gap-14 items-center">
+    <div class="text-white">
+      <h2 class="font-display text-4xl sm:text-5xl font-bold leading-tight mb-6">Consolidated communications</h2>
+      <p class="text-white/90 text-lg leading-relaxed">
+        No more wasting time checking 10 different inboxes. Neuron lets you see all messages, from all channels, in the one place!
+      </p>
+    </div>
+    <div class="flex justify-center lg:justify-end">
+      <img src="phone-icons.png" alt="" width="712" height="600" class="w-full max-w-[712px] h-auto" />
+    </div>
+  </div>
+</section>
+
+<!-- ====================== PRICING / SIMPLER SOLUTION ====================== -->
+<section class="bg-cream">
+  <div class="max-w-6xl mx-auto px-6 lg:px-10 py-24">
+    <div class="text-center max-w-2xl mx-auto">
+      <span class="pill light mb-6"><i class="ph-duotone ph-stack text-brand"></i>A simpler solution</span>
+      <h2 class="font-display text-4xl sm:text-5xl font-bold mb-5">No more paying for 5+ different apps!</h2>
+      <p class="text-ink-muted text-lg">We bring it all home — under one roof, for one price.</p>
+    </div>
+
+    <div class="mt-12 card overflow-hidden shadow-soft">
+      <div class="flex items-center justify-between px-6 py-4 border-b border-ink/5">
+        <div class="font-display font-bold">Monthly</div>
+        <div class="inline-flex rounded-full bg-gray-100 p-1 text-sm">
+          <button class="px-4 py-1.5 rounded-full bg-ink text-white">Monthly</button>
+          <button class="px-4 py-1.5 rounded-full">Yearly</button>
+        </div>
+      </div>
+
+      <ul class="divide-y divide-ink/5">
+        <li class="flex items-center justify-between px-6 py-5">
+          <div class="flex items-start gap-4">
+            <div class="h-11 w-11 rounded-xl bg-brand/10 text-brand flex items-center justify-center"><i class="ph-fill ph-storefront"></i></div>
+            <div><div class="font-semibold">Mobile Optimized "Link-in-Bio" Store</div><div class="text-xs text-ink-muted">Replaces Squarespace and Linktree</div></div>
+          </div>
+          <div class="font-display font-bold text-lg">$29</div>
+        </li>
+        <li class="flex items-center justify-between px-6 py-5">
+          <div class="flex items-start gap-4">
+            <div class="h-11 w-11 rounded-xl bg-brand/10 text-brand flex items-center justify-center"><i class="ph-fill ph-calendar-dots"></i></div>
+            <div><div class="font-semibold">Calendar Invites &amp; Bookings</div><div class="text-xs text-ink-muted">Replaces Calendly and Acuity Scheduling</div></div>
+          </div>
+          <div class="font-display font-bold text-lg">$15</div>
+        </li>
+        <li class="flex items-center justify-between px-6 py-5">
+          <div class="flex items-start gap-4">
+            <div class="h-11 w-11 rounded-xl bg-brand/10 text-brand flex items-center justify-center"><i class="ph-fill ph-graduation-cap"></i></div>
+            <div><div class="font-semibold">Course Builder</div><div class="text-xs text-ink-muted">Replaces Kajabi</div></div>
+          </div>
+          <div class="font-display font-bold text-lg">$119</div>
+        </li>
+        <li class="flex items-center justify-between px-6 py-5">
+          <div class="flex items-start gap-4">
+            <div class="h-11 w-11 rounded-xl bg-brand/10 text-brand flex items-center justify-center"><i class="ph-fill ph-chart-pie-slice"></i></div>
+            <div><div class="font-semibold">Audience Analytics</div><div class="text-xs text-ink-muted">Replaces Google Analytics</div></div>
+          </div>
+          <div class="font-display font-bold text-lg">$10</div>
+        </li>
+        <li class="flex items-center justify-between px-6 py-5">
+          <div class="flex items-start gap-4">
+            <div class="h-11 w-11 rounded-xl bg-brand/10 text-brand flex items-center justify-center"><i class="ph-fill ph-instagram-logo"></i></div>
+            <div><div class="font-semibold">Instagram AutoDMs</div><div class="text-xs text-ink-muted">Replaces Manychat</div></div>
+          </div>
+          <div class="font-display font-bold text-lg">$15</div>
+        </li>
+        <li class="flex items-center justify-between px-6 py-5">
+          <div class="flex items-start gap-4">
+            <div class="h-11 w-11 rounded-xl bg-brand/10 text-brand flex items-center justify-center"><i class="ph-fill ph-newspaper"></i></div>
+            <div><div class="font-semibold">Email List / Newsletter Builder</div><div class="text-xs text-ink-muted">Replaces Mailchimp</div></div>
+          </div>
+          <div class="font-display font-bold text-lg">$29</div>
+        </li>
+        <li class="flex items-center justify-between px-6 py-5">
+          <div class="flex items-start gap-4">
+            <div class="h-11 w-11 rounded-xl bg-brand/10 text-brand flex items-center justify-center"><i class="ph-fill ph-image-square"></i></div>
+            <div><div class="font-semibold">Social Media Template Library</div><div class="text-xs text-ink-muted">Replaces Canva Pro</div></div>
+          </div>
+          <div class="font-display font-bold text-lg">$30</div>
+        </li>
+        <li class="flex items-center justify-between px-6 py-5">
+          <div class="flex items-start gap-4">
+            <div class="h-11 w-11 rounded-xl bg-brand/10 text-brand flex items-center justify-center"><i class="ph-fill ph-users-three"></i></div>
+            <div><div class="font-semibold">Exclusive Creator Community Access</div><div class="text-xs text-ink-muted">Replaces Circle</div></div>
+          </div>
+          <div class="font-display font-bold text-lg">$97</div>
+        </li>
+        <li class="flex items-center justify-between px-6 py-5">
+          <div class="flex items-start gap-4">
+            <div class="h-11 w-11 rounded-xl bg-brand/10 text-brand flex items-center justify-center"><i class="ph-fill ph-chalkboard-teacher"></i></div>
+            <div><div class="font-semibold">1:1 Creator Strategy Coaching</div><div class="text-xs text-ink-muted">Replaces $200/hr consultants</div></div>
+          </div>
+          <div class="font-display font-bold text-lg">$99</div>
+        </li>
+      </ul>
+
+      <div class="px-6 py-5 bg-gray-50 border-t border-ink/5 flex items-center justify-between">
+        <div>
+          <div class="text-sm text-ink-muted">What you'd spend otherwise</div>
+          <div class="font-display text-xl font-bold line-through decoration-red-500/60 decoration-2">$443 / mo</div>
+        </div>
+        <div class="text-right">
+          <div class="text-sm text-ink-muted">What you'll get using our services</div>
+          <div class="font-display text-3xl font-extrabold text-brand">$97/mo</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== FAQ ====================== -->
+<section class="bg-cream-deep">
+  <div class="max-w-4xl mx-auto px-6 lg:px-10 py-24">
+    <div class="text-center mb-12">
+      <span class="pill light mb-6"><i class="ph-duotone ph-question text-brand"></i>FAQs</span>
+      <h2 class="font-display text-4xl sm:text-5xl font-bold">Frequently Asked Questions</h2>
+    </div>
+
+    <div class="space-y-3">
+      <details class="card p-6 shadow-soft" open>
+        <summary class="flex items-center justify-between gap-6">
+          <span class="font-display font-bold text-lg">What tools does Neuron replace?</span>
+          <span class="faq-plus h-8 w-8 rounded-full bg-brand text-white flex items-center justify-center shrink-0"><i class="ph-bold ph-plus"></i></span>
+        </summary>
+        <p class="mt-4 text-ink-muted leading-relaxed">
+          Neuron replaces Calendly, Mailchimp, Squarespace, Canva Pro, Linktree, Manychat, Kajabi, Google Analytics, Circle and most other point-tools you're stitching together today. Everything lives in one workspace with a single inbox, single contact record, and single source of truth.
+        </p>
+      </details>
+
+      <details class="card p-6 shadow-soft">
+        <summary class="flex items-center justify-between gap-6">
+          <span class="font-display font-bold text-lg">What type of business is Neuron for?</span>
+          <span class="faq-plus h-8 w-8 rounded-full bg-brand text-white flex items-center justify-center shrink-0"><i class="ph-bold ph-plus"></i></span>
+        </summary>
+        <p class="mt-4 text-ink-muted leading-relaxed">
+          Neuron is for ambitious businesses that want to take back control of their marketing and leads, regardless of your industry. We have seen success with trades businesses, coaches, consultants, course providers, professional businesses (such as insurance brokers, lawyers, accountants etc), creative business owners and so many more.
+        </p>
+      </details>
+
+      <details class="card p-6 shadow-soft">
+        <summary class="flex items-center justify-between gap-6">
+          <span class="font-display font-bold text-lg">What can Neuron integrate with?</span>
+          <span class="faq-plus h-8 w-8 rounded-full bg-brand text-white flex items-center justify-center shrink-0"><i class="ph-bold ph-plus"></i></span>
+        </summary>
+        <p class="mt-4 text-ink-muted leading-relaxed">
+          Neuron is designed to integrate with so many things — Xero, Quickbooks, ServiceM8, Google, Zoom, Outlook, Stripe, PayPal, Facebook, Instagram, TikTok, LinkedIn and more. For everything we don't directly integrate with, you can generally connect via Zapier or Make.
+        </p>
+      </details>
+
+      <details class="card p-6 shadow-soft">
+        <summary class="flex items-center justify-between gap-6">
+          <span class="font-display font-bold text-lg">What support is available to me once I join?</span>
+          <span class="faq-plus h-8 w-8 rounded-full bg-brand text-white flex items-center justify-center shrink-0"><i class="ph-bold ph-plus"></i></span>
+        </summary>
+        <p class="mt-4 text-ink-muted leading-relaxed">
+          Our team has put together an extensive library of videos providing information on how to use each of the different features within the platform. Additionally, we offer a done-for-you service if that's something you'd prefer — just get in touch to learn more.
+        </p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== FINAL CTA ====================== -->
+<section id="cta" class="relative overflow-hidden text-white">
+  <div class="absolute inset-0 bg-hero-radial"></div>
+  <div class="relative max-w-6xl mx-auto px-6 lg:px-10 py-24 grid lg:grid-cols-2 gap-12 items-center">
+    <div>
+      <span class="pill mb-6"><i class="ph-fill ph-sparkle text-brand-glow"></i>Introducing Neuron</span>
+      <h2 class="font-display text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
+        Built From Real Experience for <span class="text-gradient">Real Businesses.</span>
+      </h2>
+    </div>
+    <div class="lg:text-right">
+      <p class="text-white/80 text-lg mb-8 max-w-md lg:ml-auto">
+        Join hundreds of ambitious operators replacing their tool soup with Neuron — and finally seeing what's actually working.
+      </p>
+      <div class="flex flex-wrap lg:justify-end items-center gap-5">
+        <a href="#" class="btn-gradient-border inline-flex items-center gap-2 rounded-full px-6 py-3.5 font-semibold">
+          Get Started Now <i class="ph-bold ph-arrow-right"></i>
+        </a>
+        <div>
+          <div class="text-sm text-white/70">And it starts from just</div>
+          <div class="font-display text-2xl font-bold">$97<span class="text-base text-white/70 font-medium">/month AUD</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>
