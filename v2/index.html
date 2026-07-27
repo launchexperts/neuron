@@ -1,0 +1,709 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Neuron â€” Never Miss Another Lead or Call. We Build the System That Books the Work.</title>
+<meta name="description" content="A lead-capturing system for local businesses. Missed-call text-back, 60-second lead follow-up, automated booking and an AI voice receptionist â€” built, hosted and run for you, on a simple monthly plan with no upfront cost." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@700&display=swap" rel="stylesheet">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
+
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: {
+          sans: ['Inter', 'ui-sans-serif', 'system-ui'],
+          display: ['Poppins', 'Inter', 'ui-sans-serif'],
+        },
+        colors: {
+          ink:    { DEFAULT: '#0B0A1F', soft: '#1C1A3A', muted: '#5B5876' },
+          cream:  { DEFAULT: '#ffffff', deep: '#ffffff' },
+          brand:  { DEFAULT: '#6C5CE7', dark: '#4A3DC7', glow: '#A89BFF' },
+          accent: { DEFAULT: '#FFD166', warm: '#F4A261' },
+        },
+        boxShadow: {
+          soft: '0 10px 40px -10px rgba(11,10,31,0.15)',
+          ring: '0 0 0 1px rgba(11,10,31,0.06), 0 24px 48px -16px rgba(76,61,199,0.25)',
+        },
+        backgroundImage: {
+          'hero-radial':
+            'radial-gradient(circle at 50% 60%, #B7A8FF 0%, #8A77F2 22%, #6C5CE7 42%, #4A3DC7 65%, #1C1A3A 100%)',
+        },
+      },
+    },
+  };
+</script>
+
+<style>
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', system-ui, sans-serif; background:#ffffff; color:#000000; }
+  .font-display { font-family: 'Poppins', Inter, sans-serif; font-weight: 700; letter-spacing: -0.02em; }
+  .text-gradient {
+    background-image: linear-gradient(90deg, #ED3176 0%, #A232C8 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .btn-gradient-border {
+    color: #ffffff;
+    background:
+      radial-gradient(67.92% 107.63% at 50% 0%, rgba(77, 15, 152, 0) 43.66%, #B02971 100%) padding-box,
+      linear-gradient(0deg, #17002F, #17002F) padding-box,
+      linear-gradient(180deg, #99236E 0%, #FF77CD 100%) border-box;
+    border: 1px solid transparent;
+    box-shadow: 0 8px 16px 0 rgba(161, 9, 116, 0.25);
+    transition: filter .15s ease, transform .15s ease;
+  }
+  .btn-gradient-border:hover { filter: brightness(1.1); }
+  /* Secondary button â€” same ink/brand tokens as the rest of the system */
+  .btn-outline {
+    color: #0B0A1F; background: #ffffff;
+    border: 1px solid rgba(11,10,31,0.12);
+    box-shadow: 0 2px 10px -2px rgba(11,10,31,0.08);
+    transition: border-color .15s ease, filter .15s ease;
+  }
+  .btn-outline:hover { border-color: rgba(108,92,231,0.45); filter: brightness(1.01); }
+  .ring-orbit {
+    border-radius: 9999px;
+    border: 1px solid rgba(255,255,255,0.18);
+    background: radial-gradient(circle at 50% 50%, transparent 60%, rgba(255,255,255,0.04) 100%);
+  }
+  .ring-orbit-light {
+    border-radius: 9999px;
+    border: 1px dashed rgba(108, 92, 231, 0.18);
+  }
+  details > summary { list-style: none; cursor: pointer; }
+  details > summary::-webkit-details-marker { display: none; }
+  details[open] .faq-plus { transform: rotate(45deg); }
+  .faq-plus { transition: transform .2s ease; }
+  .pill {
+    display: inline-flex; align-items: center; gap: .5rem;
+    padding: .5rem 1rem; border-radius: 999px;
+    background: rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.16);
+    color:#fff; font-weight:500; font-size:.875rem;
+  }
+  .pill.light {
+    background:#fff; border-color: rgba(11,10,31,0.08); color:#0B0A1F;
+    box-shadow: 0 2px 10px -2px rgba(11,10,31,0.08);
+  }
+  .pill-hero {
+    display: inline-flex; align-items: center; gap: .5rem;
+    padding: .5rem 1rem; border-radius: 999px;
+    color: #0B0A1F; font-weight: 500; font-size: .875rem;
+    background:
+      #ffffff padding-box,
+      radial-gradient(55.9% 106.83% at 97.42% 72.92%, #FF9245 0%, rgba(255, 146, 69, 0) 64.21%) border-box,
+      radial-gradient(68.27% 130.45% at 9.59% 31.25%, #CE2966 0%, rgba(206, 41, 102, 0) 64.21%) border-box,
+      linear-gradient(0deg, #DDD5E6, #DDD5E6) border-box;
+    border: 1px solid transparent;
+    box-shadow: 0 8px 24px 0 rgba(161, 9, 116, 0.1);
+  }
+  .card { background:#fff; border:1px solid rgba(11,10,31,0.06); border-radius: 24px; }
+  .card-soft {
+    background:#fff;
+    border: 1px solid #F3E4F4;
+    border-radius: 24px;
+    box-shadow: 0 16px 48px -15px rgba(59, 13, 48, 0.05);
+  }
+  /* Highlighted pricing tier â€” gradient border built from the brand magenta, like btn-gradient-border */
+  .card-highlight {
+    background:
+      #ffffff padding-box,
+      linear-gradient(180deg, #ED3176 0%, #A232C8 100%) border-box;
+    border: 1.5px solid transparent;
+    border-radius: 24px;
+    box-shadow: 0 32px 64px -20px rgba(162, 50, 200, 0.35);
+  }
+  .badge-popular {
+    background: linear-gradient(262.64deg, #ED3176 2%, #A232C8 98.09%);
+    color: #fff;
+  }
+  .icon-tile {
+    height: 2.75rem; width: 2.75rem; border-radius: 0.75rem;
+    display: flex; align-items: center; justify-content: center;
+    background: rgba(108, 92, 231, 0.1); color: #6C5CE7; flex: none;
+  }
+  .check-dot {
+    height: 1.375rem; width: 1.375rem; border-radius: 999px; flex: none;
+    display: flex; align-items: center; justify-content: center;
+    background: rgba(108, 92, 231, 0.12); color: #6C5CE7; margin-top: 0.1rem;
+    font-size: .75rem;
+  }
+  .step-num {
+    height: 2.5rem; width: 2.5rem; border-radius: 999px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Poppins', sans-serif; font-weight: 700; color: #fff;
+    background: linear-gradient(262.64deg, #ED3176 2%, #A232C8 98.09%);
+  }
+  .stat-chip {
+    display:inline-flex; align-items:center; gap:.5rem;
+    padding:.5rem .9rem; border-radius:999px; background:#F1ECE3;
+    border:1px solid rgba(11,10,31,0.06); font-size:.875rem;
+  }
+  .grid-bg {
+    background-image:
+      linear-gradient(rgba(11,10,31,.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(11,10,31,.05) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+</style>
+</head>
+
+<body class="antialiased">
+
+<!-- ====================== HEADER ====================== -->
+<header class="sticky top-0 z-50 bg-white/85 backdrop-blur border-b border-ink/5">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 h-16 flex items-center justify-between">
+    <a href="#top" class="font-display text-xl font-bold text-ink">Neuron</a>
+    <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-ink-muted">
+      <a href="#demo" class="hover:text-ink transition">Demo</a>
+      <a href="#problem" class="hover:text-ink transition">The problem</a>
+      <a href="#system" class="hover:text-ink transition">The system</a>
+      <a href="#how" class="hover:text-ink transition">How it works</a>
+      <a href="#pricing" class="hover:text-ink transition">Pricing</a>
+    </nav>
+    <a href="#book" class="btn-gradient-border inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold">
+      Book a call <i class="ph-bold ph-arrow-right"></i>
+    </a>
+  </div>
+</header>
+
+<!-- ====================== HERO ====================== -->
+<section id="top" class="relative overflow-hidden bg-white text-ink">
+  <!-- decorative gradient backdrop image -->
+  <img
+    src="../gradient.png"
+    alt=""
+    aria-hidden="true"
+    class="pointer-events-none select-none absolute left-1/2 -translate-x-1/2 bottom-0 w-full max-w-none min-w-[1440px] z-0"
+  />
+
+  <!-- robot hand fixed to right side of viewport -->
+  <img
+    src="../robot-hand.png"
+    alt=""
+    aria-hidden="true"
+    class="pointer-events-none select-none absolute right-0 bottom-16 w-[1000px] max-w-none h-auto z-20 drop-shadow-2xl hidden lg:block"
+  />
+
+  <!-- hero copy + orb -->
+  <div class="relative max-w-6xl mx-auto px-6 lg:px-10 pt-16 pb-20 text-center">
+    <span class="pill-hero mb-7">
+      <i class="ph-fill ph-sparkle text-brand"></i>
+      The system that catches every lead â€” automatically.
+    </span>
+
+    <h1 class="font-display text-4xl sm:text-5xl lg:text-7xl font-bold leading-[1.05] max-w-5xl mx-auto text-ink">
+      Never miss another lead or call â€” we build the system that turns every enquiry into <span class="text-gradient">booked work</span>
+    </h1>
+
+    <p class="mt-7 max-w-2xl mx-auto text-ink-muted text-base sm:text-lg">
+      Every missed call gets texted back. Every enquiry gets chased in 60 seconds. Every job gets booked â€” automatically. No upfront build cost: we deploy a proven system for you, host it and get you live fast â€” so you're capturing leads from day one.
+    </p>
+
+    <!-- Demo email capture â€” TODO: wire `action`/endpoint to your CRM or email tool (e.g. LaunchExperts / Neuron form handler) -->
+    <form class="relative z-30 mt-10 mx-auto max-w-xl" action="#" method="post" onsubmit="return false;">
+      <div class="card-soft p-2 sm:p-2.5 flex flex-col sm:flex-row items-stretch gap-2">
+        <input type="text" name="first_name" required placeholder="First name" aria-label="First name"
+          class="flex-1 rounded-full px-5 py-3 text-sm bg-white border border-ink/10 focus:outline-none focus:border-brand/50" />
+        <input type="email" name="email" required placeholder="Your email" aria-label="Your email"
+          class="flex-1 rounded-full px-5 py-3 text-sm bg-white border border-ink/10 focus:outline-none focus:border-brand/50" />
+        <button type="submit" class="btn-gradient-border inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 font-semibold whitespace-nowrap">
+          Show me the demo <i class="ph-bold ph-arrow-right"></i>
+        </button>
+      </div>
+    </form>
+
+    <p class="relative z-30 mt-4 text-sm text-ink-muted">
+      Prefer to talk? <a href="#book" class="font-semibold text-ink underline decoration-brand/40 underline-offset-2 hover:decoration-brand">Book a call â†’</a>
+    </p>
+
+    <p class="relative z-30 mt-3 text-sm text-ink-muted">No upfront build cost Â· Plans from $97/mo Â· Cancel anytime</p>
+
+    <!-- radial group artwork -->
+    <div class="relative mx-auto -mt-[120px] sm:-mt-[200px] lg:-mt-[276px] w-[min(95vw,756px)]">
+      <img src="../radial-group.png" alt="" aria-hidden="true" class="w-full h-auto select-none pointer-events-none" />
+    </div>
+  </div>
+</section>
+
+<!-- ====================== DEMO ====================== -->
+<section id="demo" class="bg-white">
+  <div class="max-w-5xl mx-auto px-6 lg:px-10 pt-6 pb-24">
+    <div class="text-center max-w-2xl mx-auto mb-10">
+      <span class="pill light mb-6"><i class="ph-duotone ph-play-circle text-brand"></i>2-minute demo</span>
+      <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">See the system in action</h2>
+      <p class="text-ink-muted text-lg">Watch how a single missed call turns into a booked job â€” automatically, without you lifting a finger.</p>
+    </div>
+
+    <!-- Video placeholder â€” swap this block for your embed (YouTube/Vimeo/Wistia iframe) when ready -->
+    <div class="card-soft overflow-hidden">
+      <div class="relative aspect-video w-full flex items-center justify-center text-center"
+           style="background: linear-gradient(262.64deg, #A232C8 2%, #ED3176 98.09%);">
+        <div class="absolute inset-0 pointer-events-none" style="background-image:url('../texture.png'); opacity:.2; mix-blend-mode:overlay;"></div>
+        <div class="relative text-white">
+          <div class="mx-auto mb-4 h-20 w-20 rounded-full bg-white/15 border border-white/30 flex items-center justify-center backdrop-blur">
+            <i class="ph-fill ph-play text-4xl"></i>
+          </div>
+          <p class="font-display text-xl font-bold">Demo video coming soon</p>
+          <p class="text-white/80 text-sm mt-1">[Embed your walkthrough video here]</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== THE PROBLEM ====================== -->
+<section id="problem" class="relative bg-cream">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 py-24">
+    <div class="flex flex-col items-center text-center">
+      <span class="pill light mb-6">
+        <span class="inline-block h-1.5 w-1.5 rounded-full bg-red-500"></span>
+        The real problem
+      </span>
+      <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-bold max-w-4xl">
+        You're not losing jobs because your website isn't pretty. You're losing them because nothing is catching the enquiries.
+      </h2>
+      <p class="mt-6 max-w-2xl text-ink-muted text-lg">
+        Every day, work slips away through missed calls, slow replies and leads that go cold â€” while you're busy doing the job in front of you.
+      </p>
+    </div>
+
+    <div class="mt-14 grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+      <div class="card-soft p-7">
+        <img src="../ph_smiley-sad.png" alt="" class="h-10 w-10 mb-5" />
+        <h3 class="font-display text-xl font-bold mb-2">Missed calls = lost jobs</h3>
+        <p class="text-ink-muted text-sm leading-relaxed">A missed call is a customer ringing the next business on the list. Most never call back â€” that job is just gone.</p>
+      </div>
+      <div class="card-soft p-7">
+        <img src="../ph_chart-line-down.png" alt="" class="h-10 w-10 mb-5" />
+        <h3 class="font-display text-xl font-bold mb-2">Slow replies go cold</h3>
+        <p class="text-ink-muted text-sm leading-relaxed">Reply in 5 minutes and the lead is hot. Reply an hour later and they've already booked someone else.</p>
+      </div>
+      <div class="card-soft p-7">
+        <img src="../ph_mask-sad.png" alt="" class="h-10 w-10 mb-5" />
+        <h3 class="font-display text-xl font-bold mb-2">Enquiries everywhere</h3>
+        <p class="text-ink-muted text-sm leading-relaxed">Calls, texts, DMs, form fills, voicemails â€” scattered across apps. The ones that slip through are gone for good.</p>
+      </div>
+      <div class="card-soft p-7">
+        <img src="../ph_battery-low.png" alt="" class="h-10 w-10 mb-5" />
+        <h3 class="font-display text-xl font-bold mb-2">No system â€” just you</h3>
+        <p class="text-ink-muted text-sm leading-relaxed">You can't answer every call and chase every lead while you're on the tools. So jobs quietly fall through the cracks.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== THE SOLUTION â€” THE SYSTEM ====================== -->
+<section
+  id="system"
+  style="background-image:
+    url('../texture.png'),
+    linear-gradient(180deg, #FFFFFF 0%, rgba(255,255,255,0.2) 4.71%, rgba(255,255,255,0.2) 72.44%, #FFFFFF 100%),
+    linear-gradient(180deg, #FFFFFF 0%, #FFCDE0 27.59%, #F4C5FF 66%, #FFFFFF 100%);
+    background-blend-mode: overlay, normal, normal;"
+>
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 py-24">
+    <div class="text-center max-w-3xl mx-auto">
+      <span class="pill light mb-6"><i class="ph-duotone ph-lightning text-brand"></i>The system</span>
+      <h2 class="font-display text-4xl sm:text-5xl font-bold mb-5">
+        One system that catches every enquiry â€” and turns it into booked work
+      </h2>
+      <p class="text-ink-muted text-lg">
+        This isn't a website you have to check and manage. It's an always-on machine working in the background: catching every call and message, replying instantly, chasing every lead and booking the job â€” so nothing slips through, even when you're flat out.
+      </p>
+    </div>
+
+    <div class="mt-14 grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      <div class="card-soft p-7">
+        <div class="icon-tile mb-5"><i class="ph-fill ph-phone-incoming-call text-lg"></i></div>
+        <h3 class="font-display text-xl font-bold mb-2">Missed-call text-back</h3>
+        <p class="text-ink-muted text-sm leading-relaxed">Every missed call gets an instant text back, so the caller books with you instead of dialling the next name on the list.</p>
+      </div>
+      <div class="card-soft p-7">
+        <div class="icon-tile mb-5"><i class="ph-fill ph-lightning text-lg"></i></div>
+        <h3 class="font-display text-xl font-bold mb-2">60-second lead response</h3>
+        <p class="text-ink-muted text-sm leading-relaxed">Every new enquiry gets a reply within 60 seconds â€” while they're still interested and before a competitor gets there.</p>
+      </div>
+      <div class="card-soft p-7">
+        <div class="icon-tile mb-5"><i class="ph-fill ph-chats-circle text-lg"></i></div>
+        <h3 class="font-display text-xl font-bold mb-2">Automated follow-up</h3>
+        <p class="text-ink-muted text-sm leading-relaxed">Leads that don't reply straight away get chased automatically by text and email, so none of them go cold.</p>
+      </div>
+      <div class="card-soft p-7">
+        <div class="icon-tile mb-5"><i class="ph-fill ph-calendar-check text-lg"></i></div>
+        <h3 class="font-display text-xl font-bold mb-2">Automated booking</h3>
+        <p class="text-ink-muted text-sm leading-relaxed">Enquiries turn into booked jobs on your calendar â€” no phone tag, no back-and-forth, no double bookings.</p>
+      </div>
+      <div class="card-soft p-7">
+        <div class="icon-tile mb-5"><i class="ph-fill ph-star text-lg"></i></div>
+        <h3 class="font-display text-xl font-bold mb-2">Review generation</h3>
+        <p class="text-ink-muted text-sm leading-relaxed">Happy customers are automatically asked for a review, so your reputation grows and more locals find you.</p>
+      </div>
+      <div class="card-soft p-7">
+        <div class="icon-tile mb-5"><i class="ph-fill ph-microphone-stage text-lg"></i></div>
+        <h3 class="font-display text-xl font-bold mb-2">AI voice receptionist</h3>
+        <p class="text-ink-muted text-sm leading-relaxed">Can't get to the phone? An AI receptionist answers the call, qualifies the caller and books them straight in.</p>
+      </div>
+    </div>
+
+    <!-- The website: framed as the included front door, not the hero -->
+    <div class="mt-6 card-soft p-8 lg:p-10 grid lg:grid-cols-2 gap-10 items-center overflow-hidden">
+      <div>
+        <span class="pill light mb-5"><i class="ph-duotone ph-globe-hemisphere-west text-brand"></i>Included &amp; hosted</span>
+        <h3 class="font-display text-3xl font-bold mb-4">And yes â€” it all runs on a professional website we set up for you</h3>
+        <p class="text-ink-muted text-lg leading-relaxed mb-5">
+          We don't start from a blank page. We deploy a proven, ready-to-go setup with the whole lead-capturing system already wired in â€” then host it and get it live fast. The website is the front door your customers see: clean, fast and mobile-friendly.
+        </p>
+        <p class="text-ink-muted text-lg leading-relaxed">
+          Want to make it your own? You get our step-by-step training course to customise it yourself â€” no tech skills needed â€” or let us handle the changes for you.
+        </p>
+      </div>
+      <div class="relative">
+        <img src="../ai-call.png" alt="A missed call automatically answered with a text-back and booking" width="666" height="569" class="w-full max-w-[560px] h-auto mx-auto" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== HOW IT WORKS ====================== -->
+<section id="how" class="bg-white">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 py-24">
+    <div class="text-center max-w-3xl mx-auto mb-14">
+      <span class="pill light mb-6"><i class="ph-duotone ph-flow-arrow text-brand"></i>How it works</span>
+      <h2 class="font-display text-4xl sm:text-5xl font-bold mb-5">Your lead machine, working around the clock</h2>
+      <p class="text-ink-muted text-lg">From the moment someone reaches out, the system takes over â€” so a new enquiry becomes a booked job without you lifting a finger.</p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+      <div class="card-soft p-7">
+        <div class="flex items-center gap-4 mb-5">
+          <span class="step-num">1</span>
+          <i class="ph-fill ph-hand-waving text-2xl text-brand"></i>
+        </div>
+        <h3 class="font-display text-xl font-bold mb-2">An enquiry comes in</h3>
+        <p class="text-ink-muted text-sm leading-relaxed">Someone calls, fills in a form or sends a message â€” day or night, the system is listening.</p>
+      </div>
+      <div class="card-soft p-7">
+        <div class="flex items-center gap-4 mb-5">
+          <span class="step-num">2</span>
+          <i class="ph-fill ph-chats-circle text-2xl text-brand"></i>
+        </div>
+        <h3 class="font-display text-xl font-bold mb-2">It's captured &amp; chased</h3>
+        <p class="text-ink-muted text-sm leading-relaxed">They get a reply in seconds, a text back on any missed call, and automatic follow-ups until they respond.</p>
+      </div>
+      <div class="card-soft p-7">
+        <div class="flex items-center gap-4 mb-5">
+          <span class="step-num">3</span>
+          <i class="ph-fill ph-calendar-check text-2xl text-brand"></i>
+        </div>
+        <h3 class="font-display text-xl font-bold mb-2">The job gets booked</h3>
+        <p class="text-ink-muted text-sm leading-relaxed">They pick a time that suits, synced straight to your calendar â€” with reminders so they show up.</p>
+      </div>
+      <div class="card-soft p-7">
+        <div class="flex items-center gap-4 mb-5">
+          <span class="step-num">4</span>
+          <i class="ph-fill ph-briefcase text-2xl text-brand"></i>
+        </div>
+        <h3 class="font-display text-xl font-bold mb-2">You get the work</h3>
+        <p class="text-ink-muted text-sm leading-relaxed">You show up and do what you do best. The system already did the catching, chasing and booking.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== FOUNDER STORY ====================== -->
+<section id="story" class="bg-cream">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 py-24">
+    <div class="grid lg:grid-cols-2 gap-12 items-center">
+      <!-- Photo placeholder -->
+      <div class="card-soft p-3">
+        <div class="aspect-[4/3] w-full rounded-2xl flex items-center justify-center text-center grid-bg" style="background:#F7F2FB;">
+          <div class="text-ink-muted/70">
+            <i class="ph-duotone ph-user-circle text-6xl mb-2 block"></i>
+            <p class="text-sm">[Founder photo]</p>
+          </div>
+        </div>
+      </div>
+      <div>
+        <span class="pill light mb-6"><i class="ph-duotone ph-hand-heart text-brand"></i>Who's behind Neuron</span>
+        <h2 class="font-display text-4xl sm:text-5xl font-bold mb-6">[Founder name] â€” [one-line credibility, e.g. 10 years helping local businesses win more work]</h2>
+        <p class="text-ink-muted text-lg leading-relaxed mb-5">
+          [Founder story goes here â€” why you started Neuron. A short, human paragraph: the problem you kept seeing (great local businesses losing jobs to missed calls and slow follow-up), and why you built a system to fix it.]
+        </p>
+        <p class="text-ink-muted text-lg leading-relaxed mb-8">
+          [Second paragraph â€” your promise to clients. Keep it personal and plain: you set up and host the whole system, and back it with training so they stay in control â€” so they can get back to the work they're great at.]
+        </p>
+        <div class="flex items-center gap-4">
+          <div class="h-14 w-14 rounded-full bg-brand/10 flex items-center justify-center text-brand"><i class="ph-fill ph-user"></i></div>
+          <div>
+            <div class="font-display font-bold text-ink">[Founder name]</div>
+            <div class="text-ink-muted text-sm">[Title Â· Neuron]</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== WHY MONTHLY, NO UPFRONT ====================== -->
+<section class="relative overflow-hidden" style="background: linear-gradient(262.64deg, #A232C8 2%, #ED3176 98.09%), #FFFFFF;">
+  <div
+    class="absolute inset-0 pointer-events-none"
+    style="background-image: url('../texture.png'); opacity: 0.25; mix-blend-mode: overlay;"
+  ></div>
+  <div class="relative w-full max-w-7xl mx-auto px-6 lg:px-10 py-24">
+    <div class="max-w-3xl">
+      <span class="pill mb-6"><i class="ph-duotone ph-shield-check"></i>No upfront cost</span>
+      <h2 class="font-display text-4xl sm:text-5xl font-bold text-white leading-tight mb-6">No big invoice. Just a system that keeps working for you.</h2>
+      <p class="text-white/90 text-lg leading-relaxed mb-8">
+        Instead of a large upfront bill for a website that sits still, you get an always-on system on a simple monthly plan. It's easier on cashflow, it's always maintained, and it's always working â€” bringing in and booking jobs from day one.
+      </p>
+      <p class="text-white/90 text-lg leading-relaxed">
+        <span class="font-semibold text-white">And you're not left to wrestle with software.</span> We deploy a proven setup, host it and keep it maintained â€” so it's always up to date and always online. You stay in control: customise it yourself with our included training, or have us make the changes for you.
+      </p>
+    </div>
+
+    <div class="mt-10 flex flex-wrap gap-3">
+      <span class="pill"><i class="ph-fill ph-wallet"></i>Cashflow-friendly</span>
+      <span class="pill"><i class="ph-fill ph-wrench"></i>Always maintained</span>
+      <span class="pill"><i class="ph-fill ph-clock-countdown"></i>Always working</span>
+      <span class="pill"><i class="ph-fill ph-x-circle"></i>No upfront build cost</span>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== PRICING ====================== -->
+<section
+  id="pricing"
+  style="background-image:
+    url('../texture.png'),
+    linear-gradient(180deg, #FFFFFF 0%, rgba(255,255,255,0.2) 4.71%, rgba(255,255,255,0.2) 72.44%, #FFFFFF 100%),
+    linear-gradient(180deg, #FFFFFF 0%, #FFCDE0 27.59%, #F4C5FF 66%, #FFFFFF 100%);
+    background-blend-mode: overlay, normal, normal;"
+>
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 py-24">
+    <div class="text-center max-w-2xl mx-auto mb-14">
+      <span class="pill light mb-6"><i class="ph-duotone ph-tag text-brand"></i>Simple monthly pricing</span>
+      <h2 class="font-display text-4xl sm:text-5xl font-bold mb-5">One plan. Everything handled.</h2>
+      <p class="text-ink-muted text-lg">Pick the level that fits where your business is. No upfront build cost, no lock-in â€” just a system that pays for itself in booked jobs.</p>
+    </div>
+
+    <div class="grid lg:grid-cols-3 gap-6 items-start">
+
+      <!-- STARTER -->
+      <div class="card-soft p-8 flex flex-col h-full">
+        <h3 class="font-display text-2xl font-bold">Starter</h3>
+        <p class="text-ink-muted mt-1 mb-5">Get online &amp; never miss a lead</p>
+        <div class="flex items-end gap-1 mb-6">
+          <span class="font-display text-5xl font-extrabold text-ink">$97</span>
+          <span class="text-ink-muted font-medium mb-1.5">/month</span>
+        </div>
+        <a href="#book" class="btn-outline inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 font-semibold mb-8">
+          Get started <i class="ph-bold ph-arrow-right"></i>
+        </a>
+        <ul class="space-y-3.5 text-sm">
+          <li class="flex gap-3"><span class="check-dot"><i class="ph-bold ph-check"></i></span><span><span class="font-semibold text-ink">Missed-call text-back</span> â€” every missed call gets an automatic text</span></li>
+          <li class="flex gap-3"><span class="check-dot"><i class="ph-bold ph-check"></i></span><span><span class="font-semibold text-ink">Instant 60-second response</span> to every new enquiry</span></li>
+          <li class="flex gap-3"><span class="check-dot"><i class="ph-bold ph-check"></i></span><span>Enquiry &amp; contact forms â€” <span class="font-semibold text-ink">all leads saved in one place</span></span></li>
+          <li class="flex gap-3"><span class="check-dot"><i class="ph-bold ph-check"></i></span><span>Monthly content update requests</span></li>
+          <li class="flex gap-3"><span class="check-dot"><i class="ph-bold ph-check"></i></span><span>Professional, mobile-friendly website â€” <span class="font-semibold text-ink">built &amp; hosted for you</span></span></li>
+          <li class="flex gap-3"><span class="check-dot"><i class="ph-bold ph-check"></i></span><span>Step-by-step <span class="font-semibold text-ink">training course</span> to customise it yourself</span></li>
+        </ul>
+      </div>
+
+      <!-- GROWTH â€” highlighted / most popular -->
+      <div class="card-highlight p-8 flex flex-col h-full relative lg:-mt-4 lg:mb-4">
+        <span class="badge-popular absolute -top-3 left-1/2 -translate-x-1/2 text-xs font-semibold px-4 py-1.5 rounded-full shadow-soft">Most Popular</span>
+        <h3 class="font-display text-2xl font-bold">Growth</h3>
+        <p class="text-ink-muted mt-1 mb-5">Turn enquiries into booked jobs</p>
+        <div class="flex items-end gap-1 mb-6">
+          <span class="font-display text-5xl font-extrabold text-ink">$197</span>
+          <span class="text-ink-muted font-medium mb-1.5">/month</span>
+        </div>
+        <a href="#book" class="btn-gradient-border inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 font-semibold mb-8">
+          Get started <i class="ph-bold ph-arrow-right"></i>
+        </a>
+        <p class="text-sm font-semibold text-ink mb-4">Everything in Starter, plus:</p>
+        <ul class="space-y-3.5 text-sm">
+          <li class="flex gap-3"><span class="check-dot"><i class="ph-bold ph-check"></i></span><span><span class="font-semibold text-ink">Online booking</span> synced to your calendar</span></li>
+          <li class="flex gap-3"><span class="check-dot"><i class="ph-bold ph-check"></i></span><span>Automated appointment reminders</span></li>
+          <li class="flex gap-3"><span class="check-dot"><i class="ph-bold ph-check"></i></span><span><span class="font-semibold text-ink">24/7 AI chat assistant</span> â€” answers questions and books jobs</span></li>
+          <li class="flex gap-3"><span class="check-dot"><i class="ph-bold ph-check"></i></span><span>Automated SMS &amp; email lead follow-up</span></li>
+          <li class="flex gap-3"><span class="check-dot"><i class="ph-bold ph-check"></i></span><span>Automated review requests</span></li>
+          <li class="flex gap-3"><span class="check-dot"><i class="ph-bold ph-check"></i></span><span>Your dashboard to <span class="font-semibold text-ink">see every lead and booking</span></span></li>
+        </ul>
+      </div>
+
+      <!-- PREMIUM -->
+      <div class="card-soft p-8 flex flex-col h-full">
+        <h3 class="font-display text-2xl font-bold">Premium</h3>
+        <p class="text-ink-muted mt-1 mb-5">Never miss a call. We handle the rest</p>
+        <div class="flex items-end gap-1 mb-6">
+          <span class="font-display text-5xl font-extrabold text-ink">$297</span>
+          <span class="text-ink-muted font-medium mb-1.5">/month</span>
+        </div>
+        <a href="#book" class="btn-outline inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 font-semibold mb-8">
+          Get started <i class="ph-bold ph-arrow-right"></i>
+        </a>
+        <p class="text-sm font-semibold text-ink mb-4">Everything in Growth, plus:</p>
+        <ul class="space-y-3.5 text-sm">
+          <li class="flex gap-3"><span class="check-dot"><i class="ph-bold ph-check"></i></span><span><span class="font-semibold text-ink">24/7 AI Voice Receptionist</span> â€” answers your phone, qualifies callers, books them in</span></li>
+          <li class="flex gap-3"><span class="check-dot"><i class="ph-bold ph-check"></i></span><span><span class="font-semibold text-ink">Done-for-you updates</span> â€” up to [X] requests/month, 2 business-day turnaround</span></li>
+          <li class="flex gap-3"><span class="check-dot"><i class="ph-bold ph-check"></i></span><span>Priority turnaround on all requests</span></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <p class="text-center text-sm text-ink-muted mt-10">All plans include hosting, setup and a professionally built website â€” with no upfront build cost.</p>
+  </div>
+</section>
+
+<!-- ====================== RISK REVERSAL ====================== -->
+<section class="bg-white">
+  <div class="max-w-5xl mx-auto px-6 lg:px-10 pb-24">
+    <div class="card-soft p-8 lg:p-10">
+      <div class="text-center mb-8">
+        <span class="pill light mb-6"><i class="ph-duotone ph-shield-check text-brand"></i>Your peace of mind</span>
+        <h2 class="font-display text-3xl sm:text-4xl font-bold">Try it with confidence</h2>
+      </div>
+      <div class="grid sm:grid-cols-3 gap-6 text-left">
+        <div class="flex gap-3">
+          <span class="icon-tile"><i class="ph-fill ph-lock-simple-open"></i></span>
+          <div>
+            <div class="font-display font-bold mb-1">No lock-in contracts</div>
+            <p class="text-ink-muted text-sm">[Placeholder â€” e.g. cancel any time with 30 days' notice.]</p>
+          </div>
+        </div>
+        <div class="flex gap-3">
+          <span class="icon-tile"><i class="ph-fill ph-seal-check"></i></span>
+          <div>
+            <div class="font-display font-bold mb-1">[X]-day guarantee</div>
+            <p class="text-ink-muted text-sm">[Placeholder â€” e.g. not happy in your first 30 days? We'll make it right or refund you.]</p>
+          </div>
+        </div>
+        <div class="flex gap-3">
+          <span class="icon-tile"><i class="ph-fill ph-rocket-launch"></i></span>
+          <div>
+            <div class="font-display font-bold mb-1">No upfront build cost</div>
+            <p class="text-ink-muted text-sm">[Placeholder â€” e.g. we get your system live before you commit to a build fee.]</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== SOCIAL PROOF ====================== -->
+<section class="bg-white">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 py-24">
+    <div class="text-center max-w-2xl mx-auto mb-14">
+      <span class="pill light mb-6"><i class="ph-duotone ph-chat-centered-dots text-brand"></i>Social proof</span>
+      <h2 class="font-display text-4xl sm:text-5xl font-bold mb-5">Trusted by local businesses</h2>
+      <p class="text-ink-muted text-lg">Real results from real owners. <span class="italic">[Add your testimonials and client logos here.]</span></p>
+    </div>
+
+    <!-- Testimonial placeholders â€” no invented content -->
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      <div class="card-soft p-7">
+        <div class="flex gap-1 text-accent mb-4">
+          <i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i>
+        </div>
+        <p class="text-ink-muted leading-relaxed mb-6">"[Client testimonial goes here â€” a sentence or two on the result they got, e.g. more booked jobs or fewer missed calls.]"</p>
+        <div class="flex items-center gap-3">
+          <div class="h-11 w-11 rounded-full bg-brand/10 flex items-center justify-center text-brand"><i class="ph-fill ph-user"></i></div>
+          <div>
+            <div class="font-semibold text-ink text-sm">[Client name]</div>
+            <div class="text-ink-muted text-xs">[Business type Â· Location]</div>
+          </div>
+        </div>
+      </div>
+      <div class="card-soft p-7">
+        <div class="flex gap-1 text-accent mb-4">
+          <i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i>
+        </div>
+        <p class="text-ink-muted leading-relaxed mb-6">"[Client testimonial goes here â€” what changed for their business after the system was set up.]"</p>
+        <div class="flex items-center gap-3">
+          <div class="h-11 w-11 rounded-full bg-brand/10 flex items-center justify-center text-brand"><i class="ph-fill ph-user"></i></div>
+          <div>
+            <div class="font-semibold text-ink text-sm">[Client name]</div>
+            <div class="text-ink-muted text-xs">[Business type Â· Location]</div>
+          </div>
+        </div>
+      </div>
+      <div class="card-soft p-7">
+        <div class="flex gap-1 text-accent mb-4">
+          <i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i>
+        </div>
+        <p class="text-ink-muted leading-relaxed mb-6">"[Client testimonial goes here â€” a quick, specific quote works best.]"</p>
+        <div class="flex items-center gap-3">
+          <div class="h-11 w-11 rounded-full bg-brand/10 flex items-center justify-center text-brand"><i class="ph-fill ph-user"></i></div>
+          <div>
+            <div class="font-semibold text-ink text-sm">[Client name]</div>
+            <div class="text-ink-muted text-xs">[Business type Â· Location]</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Client logo placeholders -->
+    <div class="mt-14">
+      <p class="text-center text-sm font-medium text-ink-muted mb-8">Businesses we work with</p>
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
+        <div class="card h-20 flex items-center justify-center text-ink-muted/60 text-sm">[Client logo]</div>
+        <div class="card h-20 flex items-center justify-center text-ink-muted/60 text-sm">[Client logo]</div>
+        <div class="card h-20 flex items-center justify-center text-ink-muted/60 text-sm">[Client logo]</div>
+        <div class="card h-20 flex items-center justify-center text-ink-muted/60 text-sm">[Client logo]</div>
+        <div class="card h-20 flex items-center justify-center text-ink-muted/60 text-sm">[Client logo]</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== FINAL CTA ====================== -->
+<section
+  id="book"
+  class="relative overflow-hidden bg-no-repeat bg-bottom bg-cover"
+  style="background-image: url('../gradient-low.png');"
+>
+  <div
+    class="relative max-w-3xl mx-auto my-28 px-6 lg:px-10 py-20 text-center text-white rounded-3xl"
+    style="
+      background: linear-gradient(249.24deg, #ED3176 10.74%, #A232C8 81.3%);
+      border: 1px solid #FE7CCE;
+      box-shadow: 0 32px 48px -15px rgba(153, 0, 117, 0.25);"
+  >
+    <h2 class="font-display text-4xl sm:text-5xl font-bold mb-5">Ready to stop missing work?</h2>
+    <p class="text-white/90 text-lg mb-10 max-w-xl mx-auto">
+      Let's set up the system that catches every lead and books more jobs â€” built, hosted and run for you, with no upfront cost. Book a quick call and we'll show you how it works.
+    </p>
+    <div class="flex flex-wrap items-center justify-center gap-3">
+      <a href="#" class="btn-gradient-border inline-flex items-center gap-2 rounded-full px-6 py-3.5 font-semibold">
+        Book a call <i class="ph-bold ph-arrow-right"></i>
+      </a>
+      <a href="#pricing" class="inline-flex items-center gap-2 rounded-full px-6 py-3.5 font-semibold bg-white text-ink hover:brightness-95 transition">
+        See pricing
+      </a>
+    </div>
+    <p class="text-white/80 text-sm mt-6">No upfront build cost Â· Plans from $97/mo Â· Cancel anytime</p>
+  </div>
+</section>
+
+<!-- ====================== FOOTER ====================== -->
+<footer class="bg-white border-t border-ink/5">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 py-10 flex flex-col sm:flex-row items-center justify-between gap-4">
+    <a href="#top" class="font-display text-lg font-bold text-ink">Neuron</a>
+    <p class="text-sm text-ink-muted">The lead-capturing system for local businesses â€” built, hosted and run for you.</p>
+    <p class="text-sm text-ink-muted">Â© <span>[Year]</span> Neuron. All rights reserved.</p>
+  </div>
+</footer>
+
+</body>
+</html>
