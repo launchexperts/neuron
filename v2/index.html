@@ -4,7 +4,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Neuron — Never Miss Another Lead or Call. We Build the System That Books the Work.</title>
-<meta name="description" content="A lead-capturing system for local businesses. Missed-call text-back, 60-second lead follow-up, automated booking and an AI voice receptionist — built, hosted and run for you, on a simple monthly plan with no upfront cost." />
+<meta name="description" content="A lead-capturing system for local businesses. Missed-call text-back, 60-second lead follow-up, automated booking and an AI voice receptionist — built, hosted and run for you, on a simple monthly plan with no upfront cost to get started." />
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -111,6 +111,18 @@
     border-radius: 24px;
     box-shadow: 0 16px 48px -15px rgba(59, 13, 48, 0.05);
   }
+  /* Angled 3D screen for the hero dashboard (flat on mobile) */
+  .tilt-screen { transition: transform .5s ease; }
+  @media (min-width: 1024px) {
+    .tilt-screen {
+      transform: perspective(1600px) rotateY(-16deg) rotateX(7deg);
+      transform-origin: center;
+      box-shadow: -38px 48px 72px -28px rgba(11,10,31,0.42);
+    }
+    .tilt-screen:hover {
+      transform: perspective(1600px) rotateY(-7deg) rotateX(3deg);
+    }
+  }
   /* Highlighted pricing tier — gradient border built from the brand magenta, like btn-gradient-border */
   .card-highlight {
     background:
@@ -124,6 +136,25 @@
     background: linear-gradient(262.64deg, #ED3176 2%, #A232C8 98.09%);
     color: #fff;
   }
+  /* Growth tier — dark, vibrant highlight to steer selection */
+  .card-growth {
+    background: linear-gradient(160deg, #ED3176 0%, #C22C9A 45%, #A232C8 100%);
+    border: 1.5px solid rgba(255,255,255,0.25);
+    border-radius: 24px;
+    box-shadow: 0 32px 64px -20px rgba(162, 50, 200, 0.5);
+    color: #ffffff;
+  }
+  .card-growth .text-ink { color: #ffffff !important; }
+  .card-growth .text-ink-muted { color: rgba(255,255,255,0.85) !important; }
+  .card-growth .check-dot { background: rgba(255,255,255,0.24); color: #ffffff; }
+  /* Vibrant filled CTA for the dark Growth card */
+  .btn-solid-gradient {
+    color: #ffffff;
+    background: linear-gradient(262.64deg, #ED3176 2%, #A232C8 98.09%);
+    box-shadow: 0 10px 28px -8px rgba(162, 50, 200, 0.6);
+    transition: filter .15s ease;
+  }
+  .btn-solid-gradient:hover { filter: brightness(1.08); }
   .icon-tile {
     height: 2.75rem; width: 2.75rem; border-radius: 0.75rem;
     display: flex; align-items: center; justify-content: center;
@@ -181,54 +212,120 @@
     src="../gradient.png"
     alt=""
     aria-hidden="true"
-    class="pointer-events-none select-none absolute left-1/2 -translate-x-1/2 bottom-0 w-full max-w-none min-w-[1440px] z-0"
+    class="pointer-events-none select-none absolute left-1/2 -translate-x-1/2 bottom-0 w-full max-w-none min-w-[1440px] z-0 opacity-60"
   />
 
-  <!-- robot hand fixed to right side of viewport -->
-  <img
-    src="../robot-hand.png"
-    alt=""
-    aria-hidden="true"
-    class="pointer-events-none select-none absolute right-0 bottom-16 w-[1000px] max-w-none h-auto z-20 drop-shadow-2xl hidden lg:block"
-  />
+  <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-10 pt-16 pb-24 grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
 
-  <!-- hero copy + orb -->
-  <div class="relative max-w-6xl mx-auto px-6 lg:px-10 pt-16 pb-20 text-center">
-    <span class="pill-hero mb-7">
-      <i class="ph-fill ph-sparkle text-brand"></i>
-      The system that catches every lead — automatically.
-    </span>
+    <!-- LEFT: computer-screen dashboard mockup -->
+    <div class="order-2 lg:order-1">
+      <div class="card-soft overflow-hidden shadow-ring tilt-screen mx-auto w-full max-w-[560px]">
+        <!-- browser/window chrome -->
+        <div class="flex items-center gap-2 px-4 py-3 border-b border-ink/5 bg-white">
+          <span class="h-3 w-3 rounded-full bg-red-400"></span>
+          <span class="h-3 w-3 rounded-full bg-yellow-400"></span>
+          <span class="h-3 w-3 rounded-full bg-green-400"></span>
+          <div class="ml-3 flex-1 h-6 rounded-full bg-ink/5"></div>
+        </div>
+        <!-- dashboard body -->
+        <div class="p-5" style="background:#FAF8FF;">
+          <div class="flex items-center justify-between mb-4">
+            <div>
+              <div class="font-display font-bold text-lg text-ink">Leads Dashboard</div>
+              <div class="text-xs text-ink-muted">Last 30 days</div>
+            </div>
+            <span class="inline-flex items-center gap-1.5 text-xs font-medium text-ink-muted bg-white border border-ink/10 rounded-full px-3 py-1.5">
+              <span class="h-2 w-2 rounded-full bg-green-500"></span> Live
+            </span>
+          </div>
 
-    <h1 class="font-display text-4xl sm:text-5xl lg:text-7xl font-bold leading-[1.05] max-w-5xl mx-auto text-ink">
-      Never miss another lead or call — we build the system that turns every enquiry into <span class="text-gradient">booked work</span>
-    </h1>
+          <!-- KPI tiles -->
+          <div class="grid grid-cols-3 gap-3 mb-4">
+            <div class="card p-3">
+              <div class="text-[11px] text-ink-muted mb-1">New leads</div>
+              <div class="font-display text-2xl font-bold text-ink">128</div>
+              <div class="text-[11px] font-medium text-green-600 flex items-center gap-0.5"><i class="ph-bold ph-trend-up"></i>18%</div>
+            </div>
+            <div class="card p-3">
+              <div class="text-[11px] text-ink-muted mb-1">Booked jobs</div>
+              <div class="font-display text-2xl font-bold text-ink">47</div>
+              <div class="text-[11px] font-medium text-green-600 flex items-center gap-0.5"><i class="ph-bold ph-trend-up"></i>32%</div>
+            </div>
+            <div class="card p-3">
+              <div class="text-[11px] text-ink-muted mb-1">Calls saved</div>
+              <div class="font-display text-2xl font-bold text-ink">23</div>
+              <div class="text-[11px] font-medium text-green-600 flex items-center gap-0.5"><i class="ph-bold ph-trend-up"></i>12%</div>
+            </div>
+          </div>
 
-    <p class="mt-7 max-w-2xl mx-auto text-ink-muted text-base sm:text-lg">
-      Every missed call gets texted back. Every enquiry gets chased in 60 seconds. Every job gets booked — automatically. No upfront build cost: we deploy a proven system for you, host it and get you live fast — so you're capturing leads from day one.
-    </p>
+          <!-- Bar chart -->
+          <div class="card p-4 mb-4">
+            <div class="flex items-center justify-between mb-3">
+              <div class="text-xs font-semibold text-ink">Enquiries this week</div>
+              <div class="text-[11px] text-ink-muted">Mon–Sun</div>
+            </div>
+            <div class="flex items-end justify-between gap-2 h-24">
+              <div class="flex-1 rounded-t-md" style="height:42%; background:linear-gradient(180deg,#A232C8,#ED3176);"></div>
+              <div class="flex-1 rounded-t-md" style="height:64%; background:linear-gradient(180deg,#A232C8,#ED3176);"></div>
+              <div class="flex-1 rounded-t-md" style="height:52%; background:linear-gradient(180deg,#A232C8,#ED3176);"></div>
+              <div class="flex-1 rounded-t-md" style="height:83%; background:linear-gradient(180deg,#A232C8,#ED3176);"></div>
+              <div class="flex-1 rounded-t-md" style="height:60%; background:linear-gradient(180deg,#A232C8,#ED3176);"></div>
+              <div class="flex-1 rounded-t-md" style="height:95%; background:linear-gradient(180deg,#A232C8,#ED3176);"></div>
+              <div class="flex-1 rounded-t-md" style="height:73%; background:linear-gradient(180deg,#A232C8,#ED3176);"></div>
+            </div>
+          </div>
 
-    <!-- Demo email capture — TODO: wire `action`/endpoint to your CRM or email tool (e.g. LaunchExperts / Neuron form handler) -->
-    <form class="relative z-30 mt-10 mx-auto max-w-xl" action="#" method="post" onsubmit="return false;">
-      <div class="card-soft p-2 sm:p-2.5 flex flex-col sm:flex-row items-stretch gap-2">
-        <input type="text" name="first_name" required placeholder="First name" aria-label="First name"
-          class="flex-1 rounded-full px-5 py-3 text-sm bg-white border border-ink/10 focus:outline-none focus:border-brand/50" />
-        <input type="email" name="email" required placeholder="Your email" aria-label="Your email"
-          class="flex-1 rounded-full px-5 py-3 text-sm bg-white border border-ink/10 focus:outline-none focus:border-brand/50" />
-        <button type="submit" class="btn-gradient-border inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 font-semibold whitespace-nowrap">
-          Show me the demo <i class="ph-bold ph-arrow-right"></i>
-        </button>
+          <!-- Recent activity -->
+          <div class="card p-4">
+            <div class="text-xs font-semibold text-ink mb-1">Recent activity</div>
+            <div class="flex items-center justify-between py-2.5 border-t border-ink/5">
+              <div class="flex items-center gap-2.5">
+                <span class="h-7 w-7 rounded-full shrink-0" style="background:linear-gradient(135deg,#ED3176,#A232C8);"></span>
+                <span class="h-2.5 w-24 rounded bg-ink/10"></span>
+              </div>
+              <span class="text-[10px] font-semibold text-green-700 bg-green-100 rounded-full px-2 py-0.5">Booked</span>
+            </div>
+            <div class="flex items-center justify-between py-2.5 border-t border-ink/5">
+              <div class="flex items-center gap-2.5">
+                <span class="h-7 w-7 rounded-full shrink-0" style="background:linear-gradient(135deg,#6C5CE7,#A89BFF);"></span>
+                <span class="h-2.5 w-20 rounded bg-ink/10"></span>
+              </div>
+              <span class="text-[10px] font-semibold text-brand bg-brand/10 rounded-full px-2 py-0.5">Texted back</span>
+            </div>
+            <div class="flex items-center justify-between py-2.5 border-t border-ink/5">
+              <div class="flex items-center gap-2.5">
+                <span class="h-7 w-7 rounded-full shrink-0" style="background:linear-gradient(135deg,#F4A261,#ED3176);"></span>
+                <span class="h-2.5 w-28 rounded bg-ink/10"></span>
+              </div>
+              <span class="text-[10px] font-semibold text-amber-700 bg-amber-100 rounded-full px-2 py-0.5">New lead</span>
+            </div>
+          </div>
+        </div>
       </div>
-    </form>
+    </div>
 
-    <p class="relative z-30 mt-4 text-sm text-ink-muted">
-      Prefer to talk? <a href="#book" class="font-semibold text-ink underline decoration-brand/40 underline-offset-2 hover:decoration-brand">Book a call →</a>
-    </p>
+    <!-- RIGHT: hero copy + form -->
+    <div class="order-1 lg:order-2 text-center lg:text-left">
+      <h1 class="font-display text-4xl sm:text-5xl lg:text-5xl xl:text-6xl font-bold leading-[1.05] text-ink">
+        The system that turns every enquiry into <span class="text-gradient">booked work</span>
+      </h1>
 
-    <p class="relative z-30 mt-3 text-sm text-ink-muted">No upfront build cost · Plans from $97/mo · Cancel anytime</p>
+      <p class="mt-6 text-ink-muted text-base sm:text-lg max-w-xl mx-auto lg:mx-0">
+        Every missed call gets texted back. Every enquiry gets chased in 60 seconds. Every job gets booked — automatically. No upfront cost to get started: we deploy a proven system for you, host it and get you live fast — so you're capturing leads from day one.
+      </p>
 
-    <!-- radial group artwork -->
-    <div class="relative mx-auto -mt-[120px] sm:-mt-[200px] lg:-mt-[276px] w-[min(95vw,756px)]">
-      <img src="../radial-group.png" alt="" aria-hidden="true" class="w-full h-auto select-none pointer-events-none" />
+      <!-- Demo email capture — TODO: wire `action`/endpoint to your CRM or email tool (e.g. LaunchExperts / Neuron form handler) -->
+      <form class="mt-8 max-w-xl mx-auto lg:mx-0" action="#" method="post" onsubmit="return false;">
+        <div class="card-soft p-2 sm:p-2.5 flex flex-col sm:flex-row items-stretch gap-2">
+          <input type="text" name="first_name" required placeholder="First name" aria-label="First name"
+            class="flex-1 rounded-full px-5 py-3 text-sm bg-white border border-ink/10 focus:outline-none focus:border-brand/50" />
+          <input type="email" name="email" required placeholder="Your email" aria-label="Your email"
+            class="flex-1 rounded-full px-5 py-3 text-sm bg-white border border-ink/10 focus:outline-none focus:border-brand/50" />
+          <button type="submit" class="btn-gradient-border inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 font-semibold whitespace-nowrap">
+            Show me the demo <i class="ph-bold ph-arrow-right"></i>
+          </button>
+        </div>
+      </form>
     </div>
   </div>
 </section>
@@ -237,7 +334,6 @@
 <section id="demo" class="bg-white">
   <div class="max-w-5xl mx-auto px-6 lg:px-10 pt-6 pb-24">
     <div class="text-center max-w-2xl mx-auto mb-10">
-      <span class="pill light mb-6"><i class="ph-duotone ph-play-circle text-brand"></i>2-minute demo</span>
       <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">See the system in action</h2>
       <p class="text-ink-muted text-lg">Watch how a single missed call turns into a booked job — automatically, without you lifting a finger.</p>
     </div>
@@ -263,10 +359,6 @@
 <section id="problem" class="relative bg-cream">
   <div class="max-w-7xl mx-auto px-6 lg:px-10 py-24">
     <div class="flex flex-col items-center text-center">
-      <span class="pill light mb-6">
-        <span class="inline-block h-1.5 w-1.5 rounded-full bg-red-500"></span>
-        The real problem
-      </span>
       <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-bold max-w-4xl">
         You're not losing jobs because your website isn't pretty. You're losing them because nothing is catching the enquiries.
       </h2>
@@ -311,7 +403,6 @@
 >
   <div class="max-w-7xl mx-auto px-6 lg:px-10 py-24">
     <div class="text-center max-w-3xl mx-auto">
-      <span class="pill light mb-6"><i class="ph-duotone ph-lightning text-brand"></i>The system</span>
       <h2 class="font-display text-4xl sm:text-5xl font-bold mb-5">
         One system that catches every enquiry — and turns it into booked work
       </h2>
@@ -356,7 +447,6 @@
     <!-- The website: framed as the included front door, not the hero -->
     <div class="mt-6 card-soft p-8 lg:p-10 grid lg:grid-cols-2 gap-10 items-center overflow-hidden">
       <div>
-        <span class="pill light mb-5"><i class="ph-duotone ph-globe-hemisphere-west text-brand"></i>Included &amp; hosted</span>
         <h3 class="font-display text-3xl font-bold mb-4">And yes — it all runs on a professional website we set up for you</h3>
         <p class="text-ink-muted text-lg leading-relaxed mb-5">
           We don't start from a blank page. We deploy a proven, ready-to-go setup with the whole lead-capturing system already wired in — then host it and get it live fast. The website is the front door your customers see: clean, fast and mobile-friendly.
@@ -376,7 +466,6 @@
 <section id="how" class="bg-white">
   <div class="max-w-7xl mx-auto px-6 lg:px-10 py-24">
     <div class="text-center max-w-3xl mx-auto mb-14">
-      <span class="pill light mb-6"><i class="ph-duotone ph-flow-arrow text-brand"></i>How it works</span>
       <h2 class="font-display text-4xl sm:text-5xl font-bold mb-5">Your lead machine, working around the clock</h2>
       <p class="text-ink-muted text-lg">From the moment someone reaches out, the system takes over — so a new enquiry becomes a booked job without you lifting a finger.</p>
     </div>
@@ -385,7 +474,6 @@
       <div class="card-soft p-7">
         <div class="flex items-center gap-4 mb-5">
           <span class="step-num">1</span>
-          <i class="ph-fill ph-hand-waving text-2xl text-brand"></i>
         </div>
         <h3 class="font-display text-xl font-bold mb-2">An enquiry comes in</h3>
         <p class="text-ink-muted text-sm leading-relaxed">Someone calls, fills in a form or sends a message — day or night, the system is listening.</p>
@@ -393,7 +481,6 @@
       <div class="card-soft p-7">
         <div class="flex items-center gap-4 mb-5">
           <span class="step-num">2</span>
-          <i class="ph-fill ph-chats-circle text-2xl text-brand"></i>
         </div>
         <h3 class="font-display text-xl font-bold mb-2">It's captured &amp; chased</h3>
         <p class="text-ink-muted text-sm leading-relaxed">They get a reply in seconds, a text back on any missed call, and automatic follow-ups until they respond.</p>
@@ -401,7 +488,6 @@
       <div class="card-soft p-7">
         <div class="flex items-center gap-4 mb-5">
           <span class="step-num">3</span>
-          <i class="ph-fill ph-calendar-check text-2xl text-brand"></i>
         </div>
         <h3 class="font-display text-xl font-bold mb-2">The job gets booked</h3>
         <p class="text-ink-muted text-sm leading-relaxed">They pick a time that suits, synced straight to your calendar — with reminders so they show up.</p>
@@ -409,12 +495,45 @@
       <div class="card-soft p-7">
         <div class="flex items-center gap-4 mb-5">
           <span class="step-num">4</span>
-          <i class="ph-fill ph-briefcase text-2xl text-brand"></i>
         </div>
         <h3 class="font-display text-xl font-bold mb-2">You get the work</h3>
         <p class="text-ink-muted text-sm leading-relaxed">You show up and do what you do best. The system already did the catching, chasing and booking.</p>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- ====================== AUTHORITY QUOTE (60-SECOND RULE) ====================== -->
+<section class="relative overflow-hidden" style="background: linear-gradient(180deg, #1C1A3A 0%, #0B0A1F 100%);">
+  <div class="absolute inset-0 pointer-events-none" style="background-image:url('../texture.png'); opacity:.18; mix-blend-mode:overlay;"></div>
+  <div class="relative max-w-5xl mx-auto px-6 lg:px-10 py-24 text-center text-white">
+    <span class="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-white/70 border border-white/15 rounded-full px-4 py-1.5 mb-8">
+      <i class="ph-fill ph-lightning text-accent"></i> The 60-second rule
+    </span>
+
+    <p class="font-display text-2xl sm:text-3xl lg:text-4xl font-bold leading-snug max-w-4xl mx-auto">
+      Contact a lead within 60 seconds of them showing interest, and you could <span class="text-gradient">4x your business</span>.
+    </p>
+
+    <!-- Stat tiles -->
+    <div class="mt-14 grid sm:grid-cols-3 gap-5 text-left">
+      <div class="rounded-3xl border border-white/10 bg-white/[0.04] p-7">
+        <div class="font-display text-5xl font-extrabold"><span class="text-gradient">4x</span></div>
+        <div class="mt-3 text-sm text-white/70 leading-relaxed">potential business growth from contacting leads within 60 seconds</div>
+      </div>
+      <div class="rounded-3xl border border-white/10 bg-white/[0.04] p-7">
+        <div class="font-display text-5xl font-extrabold"><span class="text-gradient">391%</span></div>
+        <div class="mt-3 text-sm text-white/70 leading-relaxed">higher close rates when you respond to a new lead instantly</div>
+      </div>
+      <div class="rounded-3xl border border-white/10 bg-white/[0.04] p-7">
+        <div class="font-display text-5xl font-extrabold"><span class="text-gradient">80%</span></div>
+        <div class="mt-3 text-sm text-white/70 leading-relaxed">drop in your chance of closing after waiting longer than 5 minutes</div>
+      </div>
+    </div>
+
+    <p class="mt-12 text-white/80 text-lg max-w-2xl mx-auto">
+      Neuron replies to every enquiry in <span class="font-semibold text-white">under 60 seconds — automatically</span>, day or night. Most businesses take hours.
+    </p>
   </div>
 </section>
 
@@ -432,7 +551,6 @@
         </div>
       </div>
       <div>
-        <span class="pill light mb-6"><i class="ph-duotone ph-hand-heart text-brand"></i>Who's behind Neuron</span>
         <h2 class="font-display text-4xl sm:text-5xl font-bold mb-6">[Founder name] — [one-line credibility, e.g. 10 years helping local businesses win more work]</h2>
         <p class="text-ink-muted text-lg leading-relaxed mb-5">
           [Founder story goes here — why you started Neuron. A short, human paragraph: the problem you kept seeing (great local businesses losing jobs to missed calls and slow follow-up), and why you built a system to fix it.]
@@ -460,7 +578,6 @@
   ></div>
   <div class="relative w-full max-w-7xl mx-auto px-6 lg:px-10 py-24">
     <div class="max-w-3xl">
-      <span class="pill mb-6"><i class="ph-duotone ph-shield-check"></i>No upfront cost</span>
       <h2 class="font-display text-4xl sm:text-5xl font-bold text-white leading-tight mb-6">No big invoice. Just a system that keeps working for you.</h2>
       <p class="text-white/90 text-lg leading-relaxed mb-8">
         Instead of a large upfront bill for a website that sits still, you get an always-on system on a simple monthly plan. It's easier on cashflow, it's always maintained, and it's always working — bringing in and booking jobs from day one.
@@ -468,13 +585,6 @@
       <p class="text-white/90 text-lg leading-relaxed">
         <span class="font-semibold text-white">And you're not left to wrestle with software.</span> We deploy a proven setup, host it and keep it maintained — so it's always up to date and always online. You stay in control: customise it yourself with our included training, or have us make the changes for you.
       </p>
-    </div>
-
-    <div class="mt-10 flex flex-wrap gap-3">
-      <span class="pill"><i class="ph-fill ph-wallet"></i>Cashflow-friendly</span>
-      <span class="pill"><i class="ph-fill ph-wrench"></i>Always maintained</span>
-      <span class="pill"><i class="ph-fill ph-clock-countdown"></i>Always working</span>
-      <span class="pill"><i class="ph-fill ph-x-circle"></i>No upfront build cost</span>
     </div>
   </div>
 </section>
@@ -490,9 +600,8 @@
 >
   <div class="max-w-7xl mx-auto px-6 lg:px-10 py-24">
     <div class="text-center max-w-2xl mx-auto mb-14">
-      <span class="pill light mb-6"><i class="ph-duotone ph-tag text-brand"></i>Simple monthly pricing</span>
       <h2 class="font-display text-4xl sm:text-5xl font-bold mb-5">One plan. Everything handled.</h2>
-      <p class="text-ink-muted text-lg">Pick the level that fits where your business is. No upfront build cost, no lock-in — just a system that pays for itself in booked jobs.</p>
+      <p class="text-ink-muted text-lg">Pick the level that fits where your business is. No upfront cost to get started, no lock-in — just a system that pays for itself in booked jobs.</p>
     </div>
 
     <div class="grid lg:grid-cols-3 gap-6 items-start">
@@ -519,15 +628,15 @@
       </div>
 
       <!-- GROWTH — highlighted / most popular -->
-      <div class="card-highlight p-8 flex flex-col h-full relative lg:-mt-4 lg:mb-4">
-        <span class="badge-popular absolute -top-3 left-1/2 -translate-x-1/2 text-xs font-semibold px-4 py-1.5 rounded-full shadow-soft">Most Popular</span>
+      <div class="card-growth p-8 flex flex-col h-full relative lg:-mt-4 lg:mb-4">
+        <span class="absolute -top-3 left-1/2 -translate-x-1/2 text-xs font-semibold px-4 py-1.5 rounded-full shadow-soft bg-accent text-ink">Most Popular</span>
         <h3 class="font-display text-2xl font-bold">Growth</h3>
         <p class="text-ink-muted mt-1 mb-5">Turn enquiries into booked jobs</p>
         <div class="flex items-end gap-1 mb-6">
           <span class="font-display text-5xl font-extrabold text-ink">$197</span>
           <span class="text-ink-muted font-medium mb-1.5">/month</span>
         </div>
-        <a href="#book" class="btn-gradient-border inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 font-semibold mb-8">
+        <a href="#book" class="inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 font-semibold mb-8 bg-white text-ink shadow-soft hover:brightness-95 transition">
           Get started <i class="ph-bold ph-arrow-right"></i>
         </a>
         <p class="text-sm font-semibold text-ink mb-4">Everything in Starter, plus:</p>
@@ -562,7 +671,7 @@
 
     </div>
 
-    <p class="text-center text-sm text-ink-muted mt-10">All plans include hosting, setup and a professionally built website — with no upfront build cost.</p>
+    <p class="text-center text-sm text-ink-muted mt-10">All plans include hosting, setup and a professionally built website with no upfront cost to get started. Custom builds and bespoke work are optional and quoted separately.</p>
   </div>
 </section>
 
@@ -571,7 +680,6 @@
   <div class="max-w-5xl mx-auto px-6 lg:px-10 pb-24">
     <div class="card-soft p-8 lg:p-10">
       <div class="text-center mb-8">
-        <span class="pill light mb-6"><i class="ph-duotone ph-shield-check text-brand"></i>Your peace of mind</span>
         <h2 class="font-display text-3xl sm:text-4xl font-bold">Try it with confidence</h2>
       </div>
       <div class="grid sm:grid-cols-3 gap-6 text-left">
@@ -592,8 +700,8 @@
         <div class="flex gap-3">
           <span class="icon-tile"><i class="ph-fill ph-rocket-launch"></i></span>
           <div>
-            <div class="font-display font-bold mb-1">No upfront build cost</div>
-            <p class="text-ink-muted text-sm">[Placeholder — e.g. we get your system live before you commit to a build fee.]</p>
+            <div class="font-display font-bold mb-1">No upfront cost to start</div>
+            <p class="text-ink-muted text-sm">[Placeholder — e.g. we get your standard system live with no upfront build cost. Any custom work is optional and quoted up front.]</p>
           </div>
         </div>
       </div>
@@ -605,7 +713,6 @@
 <section class="bg-white">
   <div class="max-w-7xl mx-auto px-6 lg:px-10 py-24">
     <div class="text-center max-w-2xl mx-auto mb-14">
-      <span class="pill light mb-6"><i class="ph-duotone ph-chat-centered-dots text-brand"></i>Social proof</span>
       <h2 class="font-display text-4xl sm:text-5xl font-bold mb-5">Trusted by local businesses</h2>
       <p class="text-ink-muted text-lg">Real results from real owners. <span class="italic">[Add your testimonials and client logos here.]</span></p>
     </div>
@@ -616,12 +723,14 @@
         <div class="flex gap-1 text-accent mb-4">
           <i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i>
         </div>
-        <p class="text-ink-muted leading-relaxed mb-6">"[Client testimonial goes here — a sentence or two on the result they got, e.g. more booked jobs or fewer missed calls.]"</p>
+        <p class="text-ink-muted leading-relaxed mb-6">"[Leigh's testimonial quote goes here — add Leigh's own words about the result.]"</p>
         <div class="flex items-center gap-3">
-          <div class="h-11 w-11 rounded-full bg-brand/10 flex items-center justify-center text-brand"><i class="ph-fill ph-user"></i></div>
+          <div class="h-14 w-14 rounded-full overflow-hidden border-2 border-white shadow-soft shrink-0">
+            <img src="../leigh.png" alt="Leigh O'Hara" class="h-full w-full object-cover" />
+          </div>
           <div>
-            <div class="font-semibold text-ink text-sm">[Client name]</div>
-            <div class="text-ink-muted text-xs">[Business type · Location]</div>
+            <div class="font-semibold text-ink text-sm">Leigh O'Hara</div>
+            <div class="text-ink-muted text-xs">Founder · Expert Plumbing &amp; Gas Services</div>
           </div>
         </div>
       </div>
@@ -629,12 +738,14 @@
         <div class="flex gap-1 text-accent mb-4">
           <i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i>
         </div>
-        <p class="text-ink-muted leading-relaxed mb-6">"[Client testimonial goes here — what changed for their business after the system was set up.]"</p>
+        <p class="text-ink-muted leading-relaxed mb-6">"I recently adopted Neuron CRM for my business and it has been a game changer! It's helped to automate all the tedious time consuming tasks for our business. Absolutely LOVE Neuron and can't recommend it highly enough."</p>
         <div class="flex items-center gap-3">
-          <div class="h-11 w-11 rounded-full bg-brand/10 flex items-center justify-center text-brand"><i class="ph-fill ph-user"></i></div>
+          <div class="h-14 w-14 rounded-full overflow-hidden border-2 border-white shadow-soft shrink-0">
+            <img src="../samantha.jpg" alt="Samantha Porter" class="h-full w-full object-cover" />
+          </div>
           <div>
-            <div class="font-semibold text-ink text-sm">[Client name]</div>
-            <div class="text-ink-muted text-xs">[Business type · Location]</div>
+            <div class="font-semibold text-ink text-sm">Samantha Porter</div>
+            <div class="text-ink-muted text-xs">CEO · Aussie Bucket List</div>
           </div>
         </div>
       </div>
@@ -642,12 +753,14 @@
         <div class="flex gap-1 text-accent mb-4">
           <i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i>
         </div>
-        <p class="text-ink-muted leading-relaxed mb-6">"[Client testimonial goes here — a quick, specific quote works best.]"</p>
+        <p class="text-ink-muted leading-relaxed mb-6">"I'm literally saving hundreds of dollars a month on software subscriptions and countless hours!"</p>
         <div class="flex items-center gap-3">
-          <div class="h-11 w-11 rounded-full bg-brand/10 flex items-center justify-center text-brand"><i class="ph-fill ph-user"></i></div>
+          <div class="h-14 w-14 rounded-full overflow-hidden border-2 border-white shadow-soft shrink-0">
+            <img src="../callum.jpg" alt="Callum Mortimer" class="h-full w-full object-cover" />
+          </div>
           <div>
-            <div class="font-semibold text-ink text-sm">[Client name]</div>
-            <div class="text-ink-muted text-xs">[Business type · Location]</div>
+            <div class="font-semibold text-ink text-sm">Callum Mortimer</div>
+            <div class="text-ink-muted text-xs">Co-founder · Alpha Wraps</div>
           </div>
         </div>
       </div>
@@ -682,7 +795,7 @@
   >
     <h2 class="font-display text-4xl sm:text-5xl font-bold mb-5">Ready to stop missing work?</h2>
     <p class="text-white/90 text-lg mb-10 max-w-xl mx-auto">
-      Let's set up the system that catches every lead and books more jobs — built, hosted and run for you, with no upfront cost. Book a quick call and we'll show you how it works.
+      Let's set up the system that catches every lead and books more jobs — built, hosted and run for you, with no upfront cost to get started. Book a quick call and we'll show you how it works.
     </p>
     <div class="flex flex-wrap items-center justify-center gap-3">
       <a href="#" class="btn-gradient-border inline-flex items-center gap-2 rounded-full px-6 py-3.5 font-semibold">
@@ -692,7 +805,7 @@
         See pricing
       </a>
     </div>
-    <p class="text-white/80 text-sm mt-6">No upfront build cost · Plans from $97/mo · Cancel anytime</p>
+    <p class="text-white/80 text-sm mt-6">No upfront cost to get started · Plans from $97/mo · Cancel anytime</p>
   </div>
 </section>
 
