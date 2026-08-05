@@ -183,6 +183,14 @@
       linear-gradient(90deg, rgba(11,10,31,.05) 1px, transparent 1px);
     background-size: 48px 48px;
   }
+  /* Demo popup modal */
+  .demo-modal { position: fixed; inset: 0; z-index: 200; display: none; align-items: center; justify-content: center; padding: 1rem; }
+  .demo-modal.is-open { display: flex; }
+  .demo-modal__backdrop { position: absolute; inset: 0; background: rgba(11,10,31,0.65); backdrop-filter: blur(3px); }
+  .demo-modal__dialog { position: relative; width: 100%; max-width: 520px; height: 600px; max-height: 90vh; background: #fff; border-radius: 16px; box-shadow: 0 30px 70px rgba(0,0,0,0.35); overflow: hidden; }
+  .demo-modal__dialog iframe { width: 100%; height: 100%; border: none; display: block; }
+  .demo-modal__close { position: absolute; top: 6px; right: 10px; z-index: 2; width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.85); border: none; border-radius: 9999px; font-size: 24px; line-height: 1; color: #0B0A1F; cursor: pointer; transition: filter .15s ease; }
+  .demo-modal__close:hover { filter: brightness(0.95); }
 </style>
 </head>
 
@@ -199,7 +207,7 @@
       <a href="#how" class="hover:text-ink transition">How it works</a>
       <a href="#pricing" class="hover:text-ink transition">Pricing</a>
     </nav>
-    <a href="#book" class="btn-gradient-border inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold">
+    <a href="https://link.launchexperts.co/widget/booking/FzcB2WcmpRFGwESEgdQd" target="_blank" rel="noopener" class="btn-gradient-border inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold">
       Book a call <i class="ph-bold ph-arrow-right"></i>
     </a>
   </div>
@@ -314,18 +322,12 @@
         Every missed call gets texted back. Every enquiry gets chased in 60 seconds. Every job gets booked — automatically. No upfront cost to get started: we deploy a proven system for you, host it and get you live fast — so you're capturing leads from day one.
       </p>
 
-      <!-- Demo email capture — TODO: wire `action`/endpoint to your CRM or email tool (e.g. LaunchExperts / Neuron form handler) -->
-      <form class="mt-8 max-w-xl mx-auto lg:mx-0" action="#" method="post" onsubmit="return false;">
-        <div class="card-soft p-2 sm:p-2.5 flex flex-col sm:flex-row items-stretch gap-2">
-          <input type="text" name="first_name" required placeholder="First name" aria-label="First name"
-            class="flex-1 rounded-full px-5 py-3 text-sm bg-white border border-ink/10 focus:outline-none focus:border-brand/50" />
-          <input type="email" name="email" required placeholder="Your email" aria-label="Your email"
-            class="flex-1 rounded-full px-5 py-3 text-sm bg-white border border-ink/10 focus:outline-none focus:border-brand/50" />
-          <button type="submit" class="btn-gradient-border inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 font-semibold whitespace-nowrap">
-            Show me the demo <i class="ph-bold ph-arrow-right"></i>
-          </button>
-        </div>
-      </form>
+      <!-- Demo CTA — opens the Neuron Video Demo popup form -->
+      <div class="mt-8 flex justify-center lg:justify-start">
+        <button type="button" data-demo-open class="btn-gradient-border inline-flex items-center justify-center gap-2 rounded-full px-7 py-3.5 font-semibold whitespace-nowrap">
+          Show me the demo <i class="ph-bold ph-arrow-right"></i>
+        </button>
+      </div>
     </div>
   </div>
 </section>
@@ -614,7 +616,7 @@
           <span class="font-display text-5xl font-extrabold text-ink">$97</span>
           <span class="text-ink-muted font-medium mb-1.5">/month</span>
         </div>
-        <a href="#book" class="btn-outline inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 font-semibold mb-8">
+        <a href="https://link.launchexperts.co/payment-link/69f42e8db615f70a8a33acf8" target="_blank" rel="noopener" class="btn-outline inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 font-semibold mb-8">
           Get started <i class="ph-bold ph-arrow-right"></i>
         </a>
         <ul class="space-y-3.5 text-sm">
@@ -636,7 +638,7 @@
           <span class="font-display text-5xl font-extrabold text-ink">$197</span>
           <span class="text-ink-muted font-medium mb-1.5">/month</span>
         </div>
-        <a href="#book" class="inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 font-semibold mb-8 bg-white text-ink shadow-soft hover:brightness-95 transition">
+        <a href="https://link.launchexperts.co/payment-link/69f42e8db615f70a8a33acf8" target="_blank" rel="noopener" style="color:#0B0A1F" class="inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 font-semibold mb-8 bg-white shadow-soft hover:brightness-95 transition">
           Get started <i class="ph-bold ph-arrow-right"></i>
         </a>
         <p class="text-sm font-semibold text-ink mb-4">Everything in Starter, plus:</p>
@@ -658,7 +660,7 @@
           <span class="font-display text-5xl font-extrabold text-ink">$297</span>
           <span class="text-ink-muted font-medium mb-1.5">/month</span>
         </div>
-        <a href="#book" class="btn-outline inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 font-semibold mb-8">
+        <a href="https://link.launchexperts.co/payment-link/69f42e8db615f70a8a33acf8" target="_blank" rel="noopener" class="btn-outline inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 font-semibold mb-8">
           Get started <i class="ph-bold ph-arrow-right"></i>
         </a>
         <p class="text-sm font-semibold text-ink mb-4">Everything in Growth, plus:</p>
@@ -798,11 +800,8 @@
       Let's set up the system that catches every lead and books more jobs — built, hosted and run for you, with no upfront cost to get started. Book a quick call and we'll show you how it works.
     </p>
     <div class="flex flex-wrap items-center justify-center gap-3">
-      <a href="#" class="btn-gradient-border inline-flex items-center gap-2 rounded-full px-6 py-3.5 font-semibold">
+      <a href="https://link.launchexperts.co/widget/booking/FzcB2WcmpRFGwESEgdQd" target="_blank" rel="noopener" class="btn-gradient-border inline-flex items-center gap-2 rounded-full px-6 py-3.5 font-semibold">
         Book a call <i class="ph-bold ph-arrow-right"></i>
-      </a>
-      <a href="#pricing" class="inline-flex items-center gap-2 rounded-full px-6 py-3.5 font-semibold bg-white text-ink hover:brightness-95 transition">
-        See pricing
       </a>
     </div>
     <p class="text-white/80 text-sm mt-6">No upfront cost to get started · Plans from $97/mo · Cancel anytime</p>
@@ -817,6 +816,44 @@
     <p class="text-sm text-ink-muted">© <span>[Year]</span> Neuron. All rights reserved.</p>
   </div>
 </footer>
+
+<!-- ====================== DEMO POPUP MODAL ====================== -->
+<div id="demoModal" class="demo-modal" aria-hidden="true">
+  <div class="demo-modal__backdrop" data-demo-close></div>
+  <div class="demo-modal__dialog" role="dialog" aria-modal="true" aria-label="Neuron Video Demo Form">
+    <button type="button" class="demo-modal__close" data-demo-close aria-label="Close">&times;</button>
+    <iframe id="demoModalFrame" title="Neuron Video Demo Form" loading="lazy"></iframe>
+  </div>
+</div>
+<script src="https://link.launchexperts.co/js/form_embed.js"></script>
+<script>
+  (function () {
+    var modal = document.getElementById('demoModal');
+    var frame = document.getElementById('demoModalFrame');
+    var formSrc = 'https://link.launchexperts.co/widget/form/pOAFljGwldEwofvDxB22';
+    function openModal(e) {
+      if (e) e.preventDefault();
+      if (!frame.getAttribute('src')) frame.setAttribute('src', formSrc); // load on first open
+      modal.classList.add('is-open');
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeModal() {
+      modal.classList.remove('is-open');
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+    document.querySelectorAll('[data-demo-open]').forEach(function (el) {
+      el.addEventListener('click', openModal);
+    });
+    modal.querySelectorAll('[data-demo-close]').forEach(function (el) {
+      el.addEventListener('click', closeModal);
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && modal.classList.contains('is-open')) closeModal();
+    });
+  })();
+</script>
 
 </body>
 </html>
