@@ -115,12 +115,12 @@
   .tilt-screen { transition: transform .5s ease; }
   @media (min-width: 1024px) {
     .tilt-screen {
-      transform: perspective(1600px) rotateY(-16deg) rotateX(7deg);
+      transform: perspective(1600px) rotateY(16deg) rotateX(7deg);
       transform-origin: center;
-      box-shadow: -38px 48px 72px -28px rgba(11,10,31,0.42);
+      box-shadow: 38px 48px 72px -28px rgba(11,10,31,0.42);
     }
     .tilt-screen:hover {
-      transform: perspective(1600px) rotateY(-7deg) rotateX(3deg);
+      transform: perspective(1600px) rotateY(7deg) rotateX(3deg);
     }
   }
   /* Highlighted pricing tier — gradient border built from the brand magenta, like btn-gradient-border */
@@ -191,10 +191,31 @@
   .demo-modal__dialog iframe { width: 100%; height: 100%; border: none; display: block; }
   .demo-modal__close { position: absolute; top: 6px; right: 10px; z-index: 2; width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.85); border: none; border-radius: 9999px; font-size: 24px; line-height: 1; color: #0B0A1F; cursor: pointer; transition: filter .15s ease; }
   .demo-modal__close:hover { filter: brightness(0.95); }
+  /* Hero dashboard entrance animation */
+  @keyframes dashPop {
+    0%   { opacity: 0; transform: translateY(10px) scale(.9); }
+    60%  { opacity: 1; transform: translateY(-2px) scale(1.02); }
+    100% { opacity: 1; transform: translateY(0) scale(1); }
+  }
+  @keyframes dashBar { from { height: 0; } to { height: var(--h); } }
+  @keyframes dashRow { from { opacity: 0; transform: translateX(-12px); } to { opacity: 1; transform: translateX(0); } }
+  .js .dash-kpi, .js .dash-row { opacity: 0; }
+  .js .dash-bar { height: 0; }
+  .mockup.is-animated .dash-kpi { animation: dashPop .55s cubic-bezier(.2,.7,.3,1.4) both; }
+  .mockup.is-animated .dash-bar { animation: dashBar .6s cubic-bezier(.2,.7,.3,1) both; }
+  .mockup.is-animated .dash-row { animation: dashRow .5s ease both; }
+  @media (prefers-reduced-motion: reduce) {
+    .js .dash-kpi, .js .dash-row { opacity: 1; }
+    .js .dash-bar { height: var(--h); }
+    .mockup.is-animated .dash-kpi,
+    .mockup.is-animated .dash-bar,
+    .mockup.is-animated .dash-row { animation: none; }
+  }
 </style>
 </head>
 
 <body class="antialiased">
+<script>document.documentElement.classList.add('js');</script>
 
 <!-- ====================== HEADER ====================== -->
 <header class="sticky top-0 z-50 bg-white/85 backdrop-blur border-b border-ink/5">
@@ -227,7 +248,7 @@
 
     <!-- LEFT: computer-screen dashboard mockup -->
     <div class="order-2 lg:order-1">
-      <div class="card-soft overflow-hidden shadow-ring tilt-screen mx-auto w-full max-w-[560px]">
+      <div class="card-soft overflow-hidden shadow-ring tilt-screen mockup mx-auto w-full max-w-[560px]">
         <!-- browser/window chrome -->
         <div class="flex items-center gap-2 px-4 py-3 border-b border-ink/5 bg-white">
           <span class="h-3 w-3 rounded-full bg-red-400"></span>
@@ -249,19 +270,19 @@
 
           <!-- KPI tiles -->
           <div class="grid grid-cols-3 gap-3 mb-4">
-            <div class="card p-3">
+            <div class="card p-3 dash-kpi" style="animation-delay:.1s">
               <div class="text-[11px] text-ink-muted mb-1">New leads</div>
-              <div class="font-display text-2xl font-bold text-ink">128</div>
+              <div class="font-display text-2xl font-bold text-ink" data-count-to="128">0</div>
               <div class="text-[11px] font-medium text-green-600 flex items-center gap-0.5"><i class="ph-bold ph-trend-up"></i>18%</div>
             </div>
-            <div class="card p-3">
+            <div class="card p-3 dash-kpi" style="animation-delay:.2s">
               <div class="text-[11px] text-ink-muted mb-1">Booked jobs</div>
-              <div class="font-display text-2xl font-bold text-ink">47</div>
+              <div class="font-display text-2xl font-bold text-ink" data-count-to="47">0</div>
               <div class="text-[11px] font-medium text-green-600 flex items-center gap-0.5"><i class="ph-bold ph-trend-up"></i>32%</div>
             </div>
-            <div class="card p-3">
+            <div class="card p-3 dash-kpi" style="animation-delay:.3s">
               <div class="text-[11px] text-ink-muted mb-1">Calls saved</div>
-              <div class="font-display text-2xl font-bold text-ink">23</div>
+              <div class="font-display text-2xl font-bold text-ink" data-count-to="23">0</div>
               <div class="text-[11px] font-medium text-green-600 flex items-center gap-0.5"><i class="ph-bold ph-trend-up"></i>12%</div>
             </div>
           </div>
@@ -273,37 +294,37 @@
               <div class="text-[11px] text-ink-muted">Mon–Sun</div>
             </div>
             <div class="flex items-end justify-between gap-2 h-24">
-              <div class="flex-1 rounded-t-md" style="height:42%; background:linear-gradient(180deg,#A232C8,#ED3176);"></div>
-              <div class="flex-1 rounded-t-md" style="height:64%; background:linear-gradient(180deg,#A232C8,#ED3176);"></div>
-              <div class="flex-1 rounded-t-md" style="height:52%; background:linear-gradient(180deg,#A232C8,#ED3176);"></div>
-              <div class="flex-1 rounded-t-md" style="height:83%; background:linear-gradient(180deg,#A232C8,#ED3176);"></div>
-              <div class="flex-1 rounded-t-md" style="height:60%; background:linear-gradient(180deg,#A232C8,#ED3176);"></div>
-              <div class="flex-1 rounded-t-md" style="height:95%; background:linear-gradient(180deg,#A232C8,#ED3176);"></div>
-              <div class="flex-1 rounded-t-md" style="height:73%; background:linear-gradient(180deg,#A232C8,#ED3176);"></div>
+              <div class="flex-1 rounded-t-md dash-bar" style="--h:42%; animation-delay:.45s; background:linear-gradient(180deg,#A232C8,#ED3176);"></div>
+              <div class="flex-1 rounded-t-md dash-bar" style="--h:64%; animation-delay:.53s; background:linear-gradient(180deg,#A232C8,#ED3176);"></div>
+              <div class="flex-1 rounded-t-md dash-bar" style="--h:52%; animation-delay:.61s; background:linear-gradient(180deg,#A232C8,#ED3176);"></div>
+              <div class="flex-1 rounded-t-md dash-bar" style="--h:83%; animation-delay:.69s; background:linear-gradient(180deg,#A232C8,#ED3176);"></div>
+              <div class="flex-1 rounded-t-md dash-bar" style="--h:60%; animation-delay:.77s; background:linear-gradient(180deg,#A232C8,#ED3176);"></div>
+              <div class="flex-1 rounded-t-md dash-bar" style="--h:95%; animation-delay:.85s; background:linear-gradient(180deg,#A232C8,#ED3176);"></div>
+              <div class="flex-1 rounded-t-md dash-bar" style="--h:73%; animation-delay:.93s; background:linear-gradient(180deg,#A232C8,#ED3176);"></div>
             </div>
           </div>
 
           <!-- Recent activity -->
           <div class="card p-4">
             <div class="text-xs font-semibold text-ink mb-1">Recent activity</div>
-            <div class="flex items-center justify-between py-2.5 border-t border-ink/5">
+            <div class="flex items-center justify-between py-2.5 border-t border-ink/5 dash-row" style="animation-delay:1.15s">
               <div class="flex items-center gap-2.5">
-                <span class="h-7 w-7 rounded-full shrink-0" style="background:linear-gradient(135deg,#ED3176,#A232C8);"></span>
-                <span class="h-2.5 w-24 rounded bg-ink/10"></span>
+                <span class="h-7 w-7 rounded-full shrink-0 flex items-center justify-center text-white" style="background:linear-gradient(135deg,#ED3176,#A232C8);"><i class="ph-fill ph-user text-sm"></i></span>
+                <span class="text-[11px] font-medium text-ink">Sarah M.</span>
               </div>
               <span class="text-[10px] font-semibold text-green-700 bg-green-100 rounded-full px-2 py-0.5">Booked</span>
             </div>
-            <div class="flex items-center justify-between py-2.5 border-t border-ink/5">
+            <div class="flex items-center justify-between py-2.5 border-t border-ink/5 dash-row" style="animation-delay:1.35s">
               <div class="flex items-center gap-2.5">
-                <span class="h-7 w-7 rounded-full shrink-0" style="background:linear-gradient(135deg,#6C5CE7,#A89BFF);"></span>
-                <span class="h-2.5 w-20 rounded bg-ink/10"></span>
+                <span class="h-7 w-7 rounded-full shrink-0 flex items-center justify-center text-white" style="background:linear-gradient(135deg,#6C5CE7,#A89BFF);"><i class="ph-fill ph-user text-sm"></i></span>
+                <span class="text-[11px] font-medium text-ink">James T.</span>
               </div>
               <span class="text-[10px] font-semibold text-brand bg-brand/10 rounded-full px-2 py-0.5">Texted back</span>
             </div>
-            <div class="flex items-center justify-between py-2.5 border-t border-ink/5">
+            <div class="flex items-center justify-between py-2.5 border-t border-ink/5 dash-row" style="animation-delay:1.55s">
               <div class="flex items-center gap-2.5">
-                <span class="h-7 w-7 rounded-full shrink-0" style="background:linear-gradient(135deg,#F4A261,#ED3176);"></span>
-                <span class="h-2.5 w-28 rounded bg-ink/10"></span>
+                <span class="h-7 w-7 rounded-full shrink-0 flex items-center justify-center text-white" style="background:linear-gradient(135deg,#F4A261,#ED3176);"><i class="ph-fill ph-user text-sm"></i></span>
+                <span class="text-[11px] font-medium text-ink">Priya K.</span>
               </div>
               <span class="text-[10px] font-semibold text-amber-700 bg-amber-100 rounded-full px-2 py-0.5">New lead</span>
             </div>
@@ -315,7 +336,7 @@
     <!-- RIGHT: hero copy + form -->
     <div class="order-1 lg:order-2 text-center lg:text-left">
       <h1 class="font-display text-4xl sm:text-5xl lg:text-5xl xl:text-6xl font-bold leading-[1.05] text-ink">
-        The system that turns every enquiry into <span class="text-gradient">booked work</span>
+        The system that turns your enquiries into <span class="text-gradient">booked work</span>
       </h1>
 
       <p class="mt-6 text-ink-muted text-base sm:text-lg max-w-xl mx-auto lg:mx-0">
@@ -415,7 +436,7 @@
 
     <div class="mt-14 grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
       <div class="card-soft p-7">
-        <div class="icon-tile mb-5"><i class="ph-fill ph-phone-incoming-call text-lg"></i></div>
+        <div class="icon-tile mb-5"><i class="ph-fill ph-phone-incoming text-lg"></i></div>
         <h3 class="font-display text-xl font-bold mb-2">Missed-call text-back</h3>
         <p class="text-ink-muted text-sm leading-relaxed">Every missed call gets an instant text back, so the caller books with you instead of dialling the next name on the list.</p>
       </div>
@@ -543,30 +564,18 @@
 <section id="story" class="bg-cream">
   <div class="max-w-7xl mx-auto px-6 lg:px-10 py-24">
     <div class="grid lg:grid-cols-2 gap-12 items-center">
-      <!-- Photo placeholder -->
+      <!-- Founder photo -->
       <div class="card-soft p-3">
-        <div class="aspect-[4/3] w-full rounded-2xl flex items-center justify-center text-center grid-bg" style="background:#F7F2FB;">
-          <div class="text-ink-muted/70">
-            <i class="ph-duotone ph-user-circle text-6xl mb-2 block"></i>
-            <p class="text-sm">[Founder photo]</p>
-          </div>
-        </div>
+        <img src="stuart.png" alt="Stuart, Founder of Neuron" class="aspect-[4/3] w-full rounded-2xl object-cover" />
       </div>
       <div>
-        <h2 class="font-display text-4xl sm:text-5xl font-bold mb-6">[Founder name] — [one-line credibility, e.g. 10 years helping local businesses win more work]</h2>
+        <h2 class="font-display text-4xl sm:text-5xl font-bold mb-6">Hi, I'm Stuart — I've spent years helping local businesses win more work</h2>
         <p class="text-ink-muted text-lg leading-relaxed mb-5">
-          [Founder story goes here — why you started Neuron. A short, human paragraph: the problem you kept seeing (great local businesses losing jobs to missed calls and slow follow-up), and why you built a system to fix it.]
+          Running marketing for local businesses, I kept seeing the same thing: we'd work hard to drive calls and enquiries in, then watch good jobs slip away. A missed call at lunchtime. An enquiry left unanswered until the customer booked someone else. It was never a lack of leads — it was the follow-up.
         </p>
-        <p class="text-ink-muted text-lg leading-relaxed mb-8">
-          [Second paragraph — your promise to clients. Keep it personal and plain: you set up and host the whole system, and back it with training so they stay in control — so they can get back to the work they're great at.]
+        <p class="text-ink-muted text-lg leading-relaxed">
+          So I built Neuron to close that gap. We set up the whole system for you, host it, and get you live fast — so you get back to the work you're great at, and stop leaving money on the table.
         </p>
-        <div class="flex items-center gap-4">
-          <div class="h-14 w-14 rounded-full bg-brand/10 flex items-center justify-center text-brand"><i class="ph-fill ph-user"></i></div>
-          <div>
-            <div class="font-display font-bold text-ink">[Founder name]</div>
-            <div class="text-ink-muted text-sm">[Title · Neuron]</div>
-          </div>
-        </div>
       </div>
     </div>
   </div>
@@ -606,14 +615,33 @@
       <p class="text-ink-muted text-lg">Pick the level that fits where your business is. No upfront cost to get started, no lock-in — just a system that pays for itself in booked jobs.</p>
     </div>
 
-    <div class="grid lg:grid-cols-3 gap-6 items-start">
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-0 items-center">
+
+      <!-- WEBSITE -->
+      <div class="card-soft p-10 flex flex-col relative z-10 lg:self-center">
+        <h3 class="font-display text-2xl font-bold">Website only</h3>
+        <p class="text-ink-muted mt-1 mb-5">Get online with a site that's done for you</p>
+        <div class="flex items-end gap-1 mb-6">
+          <span class="font-display text-5xl font-extrabold text-ink">$97</span>
+          <span class="text-ink-muted font-medium mb-1.5">/month</span>
+        </div>
+        <a href="#" target="_blank" rel="noopener" class="btn-outline inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 font-semibold mb-8">
+          Get started <i class="ph-bold ph-arrow-right"></i>
+        </a>
+        <ul class="space-y-3.5 text-sm">
+          <li class="flex gap-3"><span class="check-dot"><i class="ph-bold ph-check"></i></span><span>Professional, mobile-friendly website — <span class="font-semibold text-ink">built &amp; hosted for you</span></span></li>
+          <li class="flex gap-3"><span class="check-dot"><i class="ph-bold ph-check"></i></span><span>Monthly content update requests</span></li>
+          <li class="flex gap-3"><span class="check-dot"><i class="ph-bold ph-check"></i></span><span><span class="font-semibold text-ink">Free domain registration</span> — first year</span></li>
+          <li class="flex gap-3"><span class="check-dot"><i class="ph-bold ph-check"></i></span><span><span class="font-semibold text-ink">Free web hosting</span></span></li>
+        </ul>
+      </div>
 
       <!-- STARTER -->
-      <div class="card-soft p-8 flex flex-col h-full">
+      <div class="card-soft p-10 flex flex-col h-full relative z-20 lg:-ml-4 shadow-xl">
         <h3 class="font-display text-2xl font-bold">Starter</h3>
         <p class="text-ink-muted mt-1 mb-5">Get online &amp; never miss a lead</p>
         <div class="flex items-end gap-1 mb-6">
-          <span class="font-display text-5xl font-extrabold text-ink">$97</span>
+          <span class="font-display text-5xl font-extrabold text-ink">$147</span>
           <span class="text-ink-muted font-medium mb-1.5">/month</span>
         </div>
         <a href="https://link.launchexperts.co/payment-link/69f42e8db615f70a8a33acf8" target="_blank" rel="noopener" class="btn-outline inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 font-semibold mb-8">
@@ -630,7 +658,7 @@
       </div>
 
       <!-- GROWTH — highlighted / most popular -->
-      <div class="card-growth p-8 flex flex-col h-full relative lg:-mt-4 lg:mb-4">
+      <div class="card-growth p-10 flex flex-col relative z-30 shadow-2xl lg:-mx-5 lg:-my-10 lg:py-16">
         <span class="absolute -top-3 left-1/2 -translate-x-1/2 text-xs font-semibold px-4 py-1.5 rounded-full shadow-soft bg-accent text-ink">Most Popular</span>
         <h3 class="font-display text-2xl font-bold">Growth</h3>
         <p class="text-ink-muted mt-1 mb-5">Turn enquiries into booked jobs</p>
@@ -653,7 +681,7 @@
       </div>
 
       <!-- PREMIUM -->
-      <div class="card-soft p-8 flex flex-col h-full">
+      <div class="card-soft p-10 flex flex-col h-full relative z-10">
         <h3 class="font-display text-2xl font-bold">Premium</h3>
         <p class="text-ink-muted mt-1 mb-5">Never miss a call. We handle the rest</p>
         <div class="flex items-end gap-1 mb-6">
@@ -689,21 +717,21 @@
           <span class="icon-tile"><i class="ph-fill ph-lock-simple-open"></i></span>
           <div>
             <div class="font-display font-bold mb-1">No lock-in contracts</div>
-            <p class="text-ink-muted text-sm">[Placeholder — e.g. cancel any time with 30 days' notice.]</p>
+            <p class="text-ink-muted text-sm">Month-to-month, never a long contract. Cancel any time with 30 days' notice.</p>
           </div>
         </div>
         <div class="flex gap-3">
-          <span class="icon-tile"><i class="ph-fill ph-seal-check"></i></span>
+          <span class="icon-tile"><i class="ph-fill ph-lightning"></i></span>
           <div>
-            <div class="font-display font-bold mb-1">[X]-day guarantee</div>
-            <p class="text-ink-muted text-sm">[Placeholder — e.g. not happy in your first 30 days? We'll make it right or refund you.]</p>
+            <div class="font-display font-bold mb-1">Live in days, not months</div>
+            <p class="text-ink-muted text-sm">We build, host and launch the whole system for you — so you're capturing leads fast, not waiting months on setup.</p>
           </div>
         </div>
         <div class="flex gap-3">
           <span class="icon-tile"><i class="ph-fill ph-rocket-launch"></i></span>
           <div>
             <div class="font-display font-bold mb-1">No upfront cost to start</div>
-            <p class="text-ink-muted text-sm">[Placeholder — e.g. we get your standard system live with no upfront build cost. Any custom work is optional and quoted up front.]</p>
+            <p class="text-ink-muted text-sm">We get your standard system live with no upfront build cost. Any custom work is optional and quoted up front.</p>
           </div>
         </div>
       </div>
@@ -716,7 +744,7 @@
   <div class="max-w-7xl mx-auto px-6 lg:px-10 py-24">
     <div class="text-center max-w-2xl mx-auto mb-14">
       <h2 class="font-display text-4xl sm:text-5xl font-bold mb-5">Trusted by local businesses</h2>
-      <p class="text-ink-muted text-lg">Real results from real owners. <span class="italic">[Add your testimonials and client logos here.]</span></p>
+      <p class="text-ink-muted text-lg">Real results from real owners.</p>
     </div>
 
     <!-- Testimonial placeholders — no invented content -->
@@ -804,7 +832,6 @@
         Book a call <i class="ph-bold ph-arrow-right"></i>
       </a>
     </div>
-    <p class="text-white/80 text-sm mt-6">No upfront cost to get started · Plans from $97/mo · Cancel anytime</p>
   </div>
 </section>
 
@@ -852,6 +879,51 @@
     document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape' && modal.classList.contains('is-open')) closeModal();
     });
+  })();
+</script>
+
+<!-- Hero dashboard entrance animation + count-up -->
+<script>
+  (function () {
+    var mockup = document.querySelector('.mockup');
+    if (!mockup) return;
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var counters = mockup.querySelectorAll('[data-count-to]');
+
+    function runCounters() {
+      counters.forEach(function (el) {
+        var target = parseInt(el.getAttribute('data-count-to'), 10) || 0;
+        if (reduce) { el.textContent = target; return; }
+        var start = null, dur = 1300, delay = 250;
+        function step(ts) {
+          if (start === null) start = ts;
+          var t = ts - start - delay;
+          if (t < 0) { requestAnimationFrame(step); return; }
+          var p = Math.min(t / dur, 1);
+          var eased = 1 - Math.pow(1 - p, 3);
+          el.textContent = Math.round(target * eased);
+          if (p < 1) requestAnimationFrame(step);
+          else el.textContent = target;
+        }
+        requestAnimationFrame(step);
+      });
+    }
+
+    function play() {
+      mockup.classList.add('is-animated');
+      runCounters();
+    }
+
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (entries, obs) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) { play(); obs.disconnect(); }
+        });
+      }, { threshold: 0.25 });
+      io.observe(mockup);
+    } else {
+      play();
+    }
   })();
 </script>
 
