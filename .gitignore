@@ -1,4 +1,5 @@
 .claude/
+.serve.ps1
 _figma_raw.txt
 *.log
 .DS_Store

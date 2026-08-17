@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Neuron — Your Demo</title>
+<meta name="description" content="Thanks for requesting a demo. Watch how Neuron captures every lead and books the work for you." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@700&display=swap" rel="stylesheet">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
+
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: {
+          sans: ['Inter', 'ui-sans-serif', 'system-ui'],
+          display: ['Poppins', 'Inter', 'ui-sans-serif'],
+        },
+        colors: {
+          ink:    { DEFAULT: '#0B0A1F', soft: '#1C1A3A', muted: '#5B5876' },
+          cream:  { DEFAULT: '#ffffff', deep: '#ffffff' },
+          brand:  { DEFAULT: '#6C5CE7', dark: '#4A3DC7', glow: '#A89BFF' },
+          accent: { DEFAULT: '#FFD166', warm: '#F4A261' },
+        },
+        boxShadow: {
+          soft: '0 10px 40px -10px rgba(11,10,31,0.15)',
+          ring: '0 0 0 1px rgba(11,10,31,0.06), 0 24px 48px -16px rgba(76,61,199,0.25)',
+        },
+      },
+    },
+  };
+</script>
+
+<style>
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', system-ui, sans-serif; background:#ffffff; color:#000000; }
+  .font-display { font-family: 'Poppins', Inter, sans-serif; font-weight: 700; letter-spacing: -0.02em; }
+  .text-gradient {
+    background-image: linear-gradient(90deg, #ED3176 0%, #A232C8 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .btn-gradient-border {
+    color: #ffffff;
+    background:
+      radial-gradient(67.92% 107.63% at 50% 0%, rgba(77, 15, 152, 0) 43.66%, #B02971 100%) padding-box,
+      linear-gradient(0deg, #17002F, #17002F) padding-box,
+      linear-gradient(180deg, #99236E 0%, #FF77CD 100%) border-box;
+    border: 1px solid transparent;
+    box-shadow: 0 8px 16px 0 rgba(161, 9, 116, 0.25);
+    transition: filter .15s ease, transform .15s ease;
+  }
+  .btn-gradient-border:hover { filter: brightness(1.08); transform: translateY(-1px); }
+  .video-frame {
+    position: relative; padding-bottom: 56.25%; height: 0;
+    border-radius: 18px; overflow: hidden;
+    box-shadow: 0 0 0 1px rgba(11,10,31,0.06), 0 30px 70px -20px rgba(76,61,199,0.35);
+    background: #0B0A1F;
+  }
+  .video-frame iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
+</style>
+</head>
+
+<body class="antialiased">
+
+<!-- ====================== HEADER ====================== -->
+<header class="sticky top-0 z-50 bg-white/85 backdrop-blur border-b border-ink/5">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 h-16 flex items-center justify-between">
+    <a href="/" class="font-display text-xl font-bold text-ink">Neuron</a>
+    <a href="https://link.launchexperts.co/widget/booking/FzcB2WcmpRFGwESEgdQd" target="_blank" rel="noopener" class="btn-gradient-border inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold">
+      Book a call <i class="ph-bold ph-arrow-right"></i>
+    </a>
+  </div>
+</header>
+
+<!-- ====================== THANK YOU / VIDEO ====================== -->
+<main class="bg-white">
+  <section class="max-w-4xl mx-auto px-6 lg:px-10 pt-16 pb-24 text-center">
+
+    <span class="inline-flex items-center gap-2 rounded-full bg-brand/10 text-brand-dark px-4 py-1.5 text-sm font-semibold mb-6">
+      <i class="ph-bold ph-check-circle"></i> You're all set
+    </span>
+
+    <h1 class="font-display text-4xl md:text-5xl font-bold text-ink leading-tight">
+      Thanks — here's your <span class="text-gradient">Neuron demo</span>
+    </h1>
+    <p class="text-ink-muted text-lg mt-4 max-w-2xl mx-auto">
+      Watch how Neuron captures every lead, follows up in seconds and books the work for you — all on autopilot.
+    </p>
+
+    <!-- Loom video embed -->
+    <div class="video-frame mt-10 text-left">
+      <iframe
+        src="https://www.loom.com/embed/170ea0caddfc4337b66b8fdda453cd46"
+        title="Neuron Demo Video"
+        frameborder="0"
+        webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+    </div>
+
+    <!-- CTA -->
+    <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
+      <a href="https://link.launchexperts.co/widget/booking/FzcB2WcmpRFGwESEgdQd" target="_blank" rel="noopener"
+         class="btn-gradient-border inline-flex items-center justify-center gap-2 rounded-full px-7 py-3.5 font-semibold">
+        Book your call <i class="ph-bold ph-arrow-right"></i>
+      </a>
+      <a href="/" class="inline-flex items-center gap-2 text-ink-muted font-semibold hover:text-ink transition">
+        <i class="ph-bold ph-arrow-left"></i> Back to home
+      </a>
+    </div>
+
+  </section>
+</main>
+
+</body>
+</html>
