@@ -187,8 +187,12 @@
   .demo-modal { position: fixed; inset: 0; z-index: 200; display: none; align-items: center; justify-content: center; padding: 1rem; }
   .demo-modal.is-open { display: flex; }
   .demo-modal__backdrop { position: absolute; inset: 0; background: rgba(11,10,31,0.65); backdrop-filter: blur(3px); }
-  .demo-modal__dialog { position: relative; width: 100%; max-width: 520px; height: 600px; max-height: 90vh; background: #fff; border-radius: 16px; box-shadow: 0 30px 70px rgba(0,0,0,0.35); overflow: hidden; }
-  .demo-modal__dialog iframe { width: 100%; height: 100%; border: none; display: block; }
+  .demo-modal__dialog { position: relative; width: 100%; max-width: 520px; max-height: 90vh; background: #fff; border-radius: 16px; box-shadow: 0 30px 70px rgba(0,0,0,0.35); overflow-x: hidden; overflow-y: auto; }
+  .demo-modal__dialog iframe { width: 100% !important; border: none; display: block; }
+  /* form_embed.js wraps the iframe in a fixed-size canvas container and injects its own
+     close button — constrain the wrapper to the dialog width and hide its stray close. */
+  .demo-modal__dialog .ep-iFrameContainer { width: 100% !important; }
+  .demo-modal__dialog .ep-close-icon { display: none !important; }
   .demo-modal__close { position: absolute; top: 6px; right: 10px; z-index: 2; width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.85); border: none; border-radius: 9999px; font-size: 24px; line-height: 1; color: #0B0A1F; cursor: pointer; transition: filter .15s ease; }
   .demo-modal__close:hover { filter: brightness(0.95); }
   /* Hero dashboard entrance animation */
@@ -361,18 +365,19 @@
       <p class="text-ink-muted text-lg">Watch how a single missed call turns into a booked job — automatically, without you lifting a finger.</p>
     </div>
 
-    <!-- Video placeholder — swap this block for your embed (YouTube/Vimeo/Wistia iframe) when ready -->
+    <!-- Video — click the thumbnail to play the Loom walkthrough inline -->
     <div class="card-soft overflow-hidden">
-      <div class="relative aspect-video w-full flex items-center justify-center text-center"
-           style="background: linear-gradient(262.64deg, #A232C8 2%, #ED3176 98.09%);">
-        <div class="absolute inset-0 pointer-events-none" style="background-image:url('texture.png'); opacity:.2; mix-blend-mode:overlay;"></div>
-        <div class="relative text-white">
-          <div class="mx-auto mb-4 h-20 w-20 rounded-full bg-white/15 border border-white/30 flex items-center justify-center backdrop-blur">
-            <i class="ph-fill ph-play text-4xl"></i>
-          </div>
-          <p class="font-display text-xl font-bold">Demo video coming soon</p>
-          <p class="text-white/80 text-sm mt-1">[Embed your walkthrough video here]</p>
-        </div>
+      <div id="demoVideo" class="relative aspect-video w-full">
+        <!-- Poster / thumbnail (removed on play) -->
+        <button type="button" id="demoVideoPlay" data-demo-open aria-label="Play demo video"
+                class="group absolute inset-0 w-full h-full flex items-center justify-center focus:outline-none">
+          <img src="demo-thumb.png" alt="Neuron demo video thumbnail" class="absolute inset-0 w-full h-full object-cover" />
+          <span class="absolute inset-0 bg-ink/20 transition group-hover:bg-ink/30"></span>
+          <span class="relative mx-auto h-20 w-20 rounded-full bg-white/20 border border-white/40 flex items-center justify-center backdrop-blur transition group-hover:scale-105"
+                style="box-shadow: 0 10px 30px rgba(11,10,31,0.35);">
+            <i class="ph-fill ph-play text-4xl text-white ml-1"></i>
+          </span>
+        </button>
       </div>
     </div>
   </div>
@@ -523,6 +528,12 @@
         <p class="text-ink-muted text-sm leading-relaxed">You show up and do what you do best. The system already did the catching, chasing and booking.</p>
       </div>
     </div>
+
+    <div class="mt-12 text-center">
+      <a href="#pricing" class="btn-gradient-border inline-flex items-center justify-center gap-2 rounded-full px-7 py-3.5 font-semibold">
+        Get started <i class="ph-bold ph-arrow-right"></i>
+      </a>
+    </div>
   </div>
 </section>
 
@@ -557,6 +568,12 @@
     <p class="mt-12 text-white/80 text-lg max-w-2xl mx-auto">
       Neuron replies to every enquiry in <span class="font-semibold text-white">under 60 seconds — automatically</span>, day or night. Most businesses take hours.
     </p>
+
+    <div class="mt-10">
+      <a href="#pricing" class="btn-gradient-border inline-flex items-center justify-center gap-2 rounded-full px-7 py-3.5 font-semibold">
+        Get started <i class="ph-bold ph-arrow-right"></i>
+      </a>
+    </div>
   </div>
 </section>
 
@@ -596,6 +613,12 @@
       <p class="text-white/90 text-lg leading-relaxed">
         <span class="font-semibold text-white">And you're not left to wrestle with software.</span> We deploy a proven setup, host it and keep it maintained — so it's always up to date and always online. You stay in control: customise it yourself with our included training, or have us make the changes for you.
       </p>
+
+      <div class="mt-8">
+        <a href="#pricing" class="inline-flex items-center justify-center gap-2 rounded-full px-7 py-3.5 font-semibold bg-white text-ink hover:bg-white/90 transition" style="box-shadow: 0 10px 30px rgba(11,10,31,0.25);">
+          Get started <i class="ph-bold ph-arrow-right"></i>
+        </a>
+      </div>
     </div>
   </div>
 </section>
@@ -849,21 +872,47 @@
   <div class="demo-modal__backdrop" data-demo-close></div>
   <div class="demo-modal__dialog" role="dialog" aria-modal="true" aria-label="Neuron Video Demo Form">
     <button type="button" class="demo-modal__close" data-demo-close aria-label="Close">&times;</button>
-    <iframe id="demoModalFrame" title="Neuron Video Demo Form" loading="lazy"></iframe>
+    <iframe id="inline-pOAFljGwldEwofvDxB22"
+            data-layout="{'id':'inline-pOAFljGwldEwofvDxB22'}"
+            data-trigger-type="alwaysShow"
+            data-activation-type="alwaysActivated"
+            data-deactivation-type="neverDeactivate"
+            data-form-name="Neuron Video Demo Form"
+            data-layout-iframe-id="inline-pOAFljGwldEwofvDxB22"
+            data-form-id="pOAFljGwldEwofvDxB22"
+            title="Neuron Video Demo Form"
+            style="height: 600px;"></iframe>
   </div>
 </div>
 <script src="https://link.launchexperts.co/js/form_embed.js"></script>
 <script>
   (function () {
     var modal = document.getElementById('demoModal');
-    var frame = document.getElementById('demoModalFrame');
+    var dialog = modal.querySelector('.demo-modal__dialog');
+    var frame = document.getElementById('inline-pOAFljGwldEwofvDxB22');
     var formSrc = 'https://link.launchexperts.co/widget/form/pOAFljGwldEwofvDxB22';
+
+    // form_embed.js wraps the iframe in a fixed-size ".ep-iFrameContainer" and drives the
+    // iframe's height via postMessage. Mirror that height onto the wrapper so the dialog
+    // hugs the form instead of overflowing the wrapper's 800x400 design canvas.
+    function syncFormHeight() {
+      var wrap = document.getElementById('inline-pOAFljGwldEwofvDxB22-div');
+      if (!wrap) return;
+      var h = frame.offsetHeight + 'px';
+      if (wrap.style.width !== '100%') wrap.style.setProperty('width', '100%', 'important');
+      if (wrap.style.height !== h) wrap.style.setProperty('height', h, 'important');
+    }
+    var mo = new MutationObserver(syncFormHeight);
+    mo.observe(dialog, { subtree: true, childList: true, attributes: true, attributeFilter: ['style'] });
+    window.addEventListener('resize', syncFormHeight);
+
     function openModal(e) {
       if (e) e.preventDefault();
       if (!frame.getAttribute('src')) frame.setAttribute('src', formSrc); // load on first open
       modal.classList.add('is-open');
       modal.setAttribute('aria-hidden', 'false');
       document.body.style.overflow = 'hidden';
+      syncFormHeight();
     }
     function closeModal() {
       modal.classList.remove('is-open');
