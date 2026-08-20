@@ -215,6 +215,31 @@
     .mockup.is-animated .dash-bar,
     .mockup.is-animated .dash-row { animation: none; }
   }
+  /* "Many tools → one system" converge visual */
+  .converge-tile {
+    aspect-ratio: 1 / 1; width: 100%; max-width: 3.25rem; margin: 0 auto;
+    border-radius: 0.6rem; background: #fff;
+    display: flex; align-items: center; justify-content: center;
+    padding: 0.5rem; box-shadow: 0 8px 18px -10px rgba(11,10,31,0.45);
+    animation: convergeFloat 5s ease-in-out infinite;
+  }
+  .converge-tile img { width: 100%; height: 100%; object-fit: contain; }
+  @keyframes convergeFloat {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-5px); }
+  }
+  .converge-line { stroke-dasharray: 3 5; animation: convergeFlow 1.3s linear infinite; }
+  @keyframes convergeFlow { to { stroke-dashoffset: -32; } }
+  .converge-hub {
+    animation: convergePulse 2.6s ease-in-out infinite;
+  }
+  @keyframes convergePulse {
+    0%, 100% { box-shadow: 0 18px 40px -12px rgba(11,10,31,0.45), 0 0 0 0 rgba(255,255,255,0.5); }
+    50%      { box-shadow: 0 18px 40px -12px rgba(11,10,31,0.45), 0 0 0 10px rgba(255,255,255,0); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .converge-tile, .converge-line, .converge-hub { animation: none; }
+  }
 </style>
 </head>
 
@@ -605,20 +630,77 @@
     style="background-image: url('texture.png'); opacity: 0.25; mix-blend-mode: overlay;"
   ></div>
   <div class="relative w-full max-w-7xl mx-auto px-6 lg:px-10 py-24">
-    <div class="max-w-3xl">
-      <h2 class="font-display text-4xl sm:text-5xl font-bold text-white leading-tight mb-6">No big invoice. Just a system that keeps working for you.</h2>
-      <p class="text-white/90 text-lg leading-relaxed mb-8">
-        Instead of a large upfront bill for a website that sits still, you get an always-on system on a simple monthly plan. It's easier on cashflow, it's always maintained, and it's always working — bringing in and booking jobs from day one.
-      </p>
-      <p class="text-white/90 text-lg leading-relaxed">
-        <span class="font-semibold text-white">And you're not left to wrestle with software.</span> We deploy a proven setup, host it and keep it maintained — so it's always up to date and always online. You stay in control: customise it yourself with our included training, or have us make the changes for you.
-      </p>
+    <div class="grid lg:grid-cols-2 gap-14 lg:gap-16 items-center">
 
-      <div class="mt-8">
-        <a href="#pricing" class="inline-flex items-center justify-center gap-2 rounded-full px-7 py-3.5 font-semibold bg-white text-ink hover:bg-white/90 transition" style="box-shadow: 0 10px 30px rgba(11,10,31,0.25);">
-          Get started <i class="ph-bold ph-arrow-right"></i>
-        </a>
+      <!-- Copy -->
+      <div class="max-w-xl">
+        <h2 class="font-display text-4xl sm:text-5xl font-bold text-white leading-tight mb-6">No big invoice. Just a system that keeps working for you.</h2>
+        <p class="text-white/90 text-lg leading-relaxed mb-8">
+          Instead of a large upfront bill for a website that sits still, you get an always-on system on a simple monthly plan. It's easier on cashflow, it's always maintained, and it's always working — bringing in and booking jobs from day one.
+        </p>
+        <p class="text-white/90 text-lg leading-relaxed">
+          <span class="font-semibold text-white">And you're not left to wrestle with software.</span> We deploy a proven setup, host it and keep it maintained — so it's always up to date and always online. You stay in control: customise it yourself with our included training, or have us make the changes for you.
+        </p>
+
+        <div class="mt-8">
+          <a href="#pricing" class="inline-flex items-center justify-center gap-2 rounded-full px-7 py-3.5 font-semibold bg-white text-ink hover:bg-white/90 transition" style="box-shadow: 0 10px 30px rgba(11,10,31,0.25);">
+            Get started <i class="ph-bold ph-arrow-right"></i>
+          </a>
+        </div>
       </div>
+
+      <!-- Visual: many tools condensed into one Neuron system -->
+      <div class="relative">
+        <div>
+          <!-- Scattered tools -->
+          <div class="grid grid-cols-5 gap-2 sm:gap-2.5">
+            <div class="converge-tile" style="animation-delay: 0s;"><img src="facebook.png" alt="Facebook" /></div>
+            <div class="converge-tile" style="animation-delay: .3s;"><img src="instagram.png" alt="Instagram" /></div>
+            <div class="converge-tile" style="animation-delay: .6s;"><img src="google-ads.png" alt="Google Ads" /></div>
+            <div class="converge-tile" style="animation-delay: .9s;"><img src="tiktok.png" alt="TikTok" /></div>
+            <div class="converge-tile" style="animation-delay: 1.2s;"><img src="whatsapp.png" alt="WhatsApp" /></div>
+            <div class="converge-tile" style="animation-delay: .2s;"><img src="mailchimp.png" alt="Mailchimp" /></div>
+            <div class="converge-tile" style="animation-delay: .5s;"><img src="google-calendar.png" alt="Google Calendar" /></div>
+            <div class="converge-tile" style="animation-delay: .8s;"><img src="calendly.svg" alt="Calendly" /></div>
+            <div class="converge-tile" style="animation-delay: 1.1s;"><img src="typeform.png" alt="Typeform" /></div>
+            <div class="converge-tile" style="animation-delay: 1.4s;"><img src="manychat.svg" alt="ManyChat" /></div>
+            <div class="converge-tile" style="animation-delay: .4s;"><img src="intercom.png" alt="Intercom" /></div>
+            <div class="converge-tile" style="animation-delay: .7s;"><img src="wordpress.png" alt="WordPress" /></div>
+            <div class="converge-tile" style="animation-delay: 1s;"><img src="wix.png" alt="Wix" /></div>
+            <div class="converge-tile" style="animation-delay: 1.3s;"><img src="leadpages.png" alt="Leadpages" /></div>
+            <div class="converge-tile" style="animation-delay: 1.6s;"><img src="synthflow.png" alt="Synthflow" /></div>
+            <div class="converge-tile" style="animation-delay: .1s;"><img src="reviews.png" alt="Reviews" /></div>
+            <div class="converge-tile" style="animation-delay: .5s;"><img src="google-analytics.png" alt="Google Analytics" /></div>
+            <div class="converge-tile" style="animation-delay: .9s;"><img src="birdeye.png" alt="Birdeye" /></div>
+            <div class="converge-tile" style="animation-delay: 1.3s;"><img src="skool.png" alt="Skool" /></div>
+            <div class="converge-tile" style="animation-delay: 1.7s;"><img src="docusign.png" alt="DocuSign" /></div>
+          </div>
+
+          <!-- Converging connectors -->
+          <div class="relative h-16 sm:h-24 -mt-1 mb-1">
+            <svg viewBox="0 0 100 40" preserveAspectRatio="none" class="absolute inset-0 w-full h-full" aria-hidden="true">
+              <g fill="none" stroke="#ffffff" stroke-width="1" stroke-linecap="round" vector-effect="non-scaling-stroke">
+                <path d="M10 0 L50 40" stroke-opacity="0.85" class="converge-line" style="animation-delay: 0s;" />
+                <path d="M30 0 L50 40" stroke-opacity="0.85" class="converge-line" style="animation-delay: .3s;" />
+                <path d="M50 0 L50 40" stroke-opacity="0.85" class="converge-line" style="animation-delay: .6s;" />
+                <path d="M70 0 L50 40" stroke-opacity="0.85" class="converge-line" style="animation-delay: .9s;" />
+                <path d="M90 0 L50 40" stroke-opacity="0.85" class="converge-line" style="animation-delay: 1.2s;" />
+              </g>
+            </svg>
+          </div>
+
+          <!-- The single Neuron system -->
+          <div class="flex justify-center">
+            <div class="converge-hub inline-flex items-center gap-3.5 rounded-full bg-white pl-4 pr-8 py-4 sm:py-5">
+              <span class="h-12 w-12 sm:h-14 sm:w-14 rounded-full flex items-center justify-center text-white" style="background: linear-gradient(262.64deg, #A232C8 2%, #ED3176 98.09%);">
+                <i class="ph-bold ph-brain text-2xl sm:text-3xl"></i>
+              </span>
+              <span class="font-display text-2xl sm:text-3xl font-bold text-ink">Neuron</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
@@ -648,7 +730,7 @@
           <span class="font-display text-5xl font-extrabold text-ink">$97</span>
           <span class="text-ink-muted font-medium mb-1.5">/month</span>
         </div>
-        <a href="#" target="_blank" rel="noopener" class="btn-outline inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 font-semibold mb-8">
+        <a href="https://link.neuroncrm.ai/payment-link/6a28a7d371a0aa761e463ebc" target="_blank" rel="noopener" class="btn-outline inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 font-semibold mb-8">
           Get started <i class="ph-bold ph-arrow-right"></i>
         </a>
         <ul class="space-y-3.5 text-sm">
