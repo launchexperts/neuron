@@ -147,6 +147,14 @@
   .card-growth .text-ink { color: #ffffff !important; }
   .card-growth .text-ink-muted { color: rgba(255,255,255,0.85) !important; }
   .card-growth .check-dot { background: rgba(255,255,255,0.24); color: #ffffff; }
+  /* Starter & Premium — softly tinted so they carry colour but stay secondary to Growth */
+  .card-tinted {
+    background: linear-gradient(180deg, #FFF4FA 0%, #FBF6FF 100%);
+    border: 1px solid #F1CFE6;
+    border-radius: 24px;
+    box-shadow: 0 18px 48px -16px rgba(162, 50, 200, 0.16);
+  }
+  .card-tinted .check-dot { background: rgba(194, 44, 154, 0.12); color: #C22C9A; }
   /* Vibrant filled CTA for the dark Growth card */
   .btn-solid-gradient {
     color: #ffffff;
@@ -611,12 +619,12 @@
         <img src="stuart.png" alt="Stuart, Founder of Neuron" class="aspect-[4/3] w-full rounded-2xl object-cover" />
       </div>
       <div>
-        <h2 class="font-display text-4xl sm:text-5xl font-bold mb-6">Hi, I'm Stuart — I've spent years helping local businesses win more work</h2>
+        <h2 class="font-display text-4xl sm:text-5xl font-bold mb-6">Hi, I'm Stuart — I've spent years helping local businesses make more money and get their time back</h2>
         <p class="text-ink-muted text-lg leading-relaxed mb-5">
-          Running marketing for local businesses, I kept seeing the same thing: we'd work hard to drive calls and enquiries in, then watch good jobs slip away. A missed call at lunchtime. An enquiry left unanswered until the customer booked someone else. It was never a lack of leads — it was the follow-up.
+          Running marketing for local businesses, I kept seeing the same thing: owners doing everything themselves. Chasing enquiries between jobs, juggling ten different tools and subscriptions, working nights on admin, and still watching good work slip through the cracks. It was never that they weren't good enough — they just didn't have the time or the system to keep up.
         </p>
         <p class="text-ink-muted text-lg leading-relaxed">
-          So I built Neuron to close that gap. We set up the whole system for you, host it, and get you live fast — so you get back to the work you're great at, and stop leaving money on the table.
+          So I built Neuron to fix that. One system that captures every lead, follows up instantly, books the job, and keeps your customers coming back — automatically. We set it up for you, host it, and get you live fast — so you win more work, earn more per month, and finally get your evenings back instead of leaving money on the table.
         </p>
       </div>
     </div>
@@ -705,6 +713,121 @@
   </div>
 </section>
 
+<!-- ====================== TOOL STACK COMPARISON ====================== -->
+<section class="bg-cream">
+  <div class="max-w-6xl mx-auto px-6 lg:px-10 py-24">
+    <div class="text-center max-w-2xl mx-auto mb-14">
+      <h2 class="font-display text-4xl sm:text-5xl font-bold mb-5">Stop paying for a dozen tools that don't talk to each other</h2>
+      <p class="text-ink-muted text-lg">Most businesses cobble together a stack of subscriptions — and pay for every one, every month. Neuron does the job of all of them, in one place, for a fraction of the cost.</p>
+    </div>
+
+    <!-- Billing toggle -->
+    <div class="flex items-center justify-center gap-4 mb-10">
+      <span class="js-bill-monthly font-semibold text-ink transition">Monthly</span>
+      <button type="button" role="switch" aria-checked="false" aria-label="Switch to annual billing" data-billing-switch
+        class="relative inline-flex h-7 w-14 shrink-0 items-center rounded-full bg-ink/20 transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent">
+        <span class="js-knob inline-block h-5 w-5 translate-x-1 rounded-full bg-white shadow transition-transform duration-200"></span>
+      </button>
+      <span class="js-bill-annual font-semibold text-ink-muted transition">Annual</span>
+    </div>
+
+    <div class="card-soft overflow-hidden">
+      <div class="overflow-x-auto">
+        <table class="w-full text-left border-collapse min-w-[520px]">
+          <thead>
+            <tr class="text-xs uppercase tracking-wide text-ink-muted border-b border-[#F3E4F4]">
+              <th class="py-4 px-5 sm:px-6 font-semibold">What it does</th>
+              <th class="py-4 px-5 sm:px-6 font-semibold">The usual tools</th>
+              <th class="py-4 px-5 sm:px-6 font-semibold text-right whitespace-nowrap">Typical cost</th>
+            </tr>
+          </thead>
+          <tbody class="text-sm">
+            <!-- rows -->
+            <tr class="border-b border-[#F5EFF6]">
+              <td class="py-3.5 px-5 sm:px-6 font-semibold text-ink">CRM &amp; pipeline management</td>
+              <td class="py-3.5 px-5 sm:px-6 text-ink-muted">HubSpot, Pipedrive</td>
+              <td class="py-3.5 px-5 sm:px-6 text-right text-ink-muted whitespace-nowrap"><span class="js-price" data-monthly="$99/mo" data-annual="$1,188/yr">$99/mo</span></td>
+            </tr>
+            <tr class="border-b border-[#F5EFF6]">
+              <td class="py-3.5 px-5 sm:px-6 font-semibold text-ink">Unlimited sales funnels</td>
+              <td class="py-3.5 px-5 sm:px-6 text-ink-muted">ClickFunnels</td>
+              <td class="py-3.5 px-5 sm:px-6 text-right text-ink-muted whitespace-nowrap"><span class="js-price" data-monthly="$297/mo" data-annual="$3,564/yr">$297/mo</span></td>
+            </tr>
+            <tr class="border-b border-[#F5EFF6]">
+              <td class="py-3.5 px-5 sm:px-6 font-semibold text-ink">Website builder</td>
+              <td class="py-3.5 px-5 sm:px-6 text-ink-muted">WordPress, Wix, Squarespace</td>
+              <td class="py-3.5 px-5 sm:px-6 text-right text-ink-muted whitespace-nowrap"><span class="js-price" data-monthly="$29/mo" data-annual="$348/yr">$29/mo</span></td>
+            </tr>
+            <tr class="border-b border-[#F5EFF6]">
+              <td class="py-3.5 px-5 sm:px-6 font-semibold text-ink">Surveys &amp; forms</td>
+              <td class="py-3.5 px-5 sm:px-6 text-ink-muted">SurveyMonkey, Typeform, Jotform</td>
+              <td class="py-3.5 px-5 sm:px-6 text-right text-ink-muted whitespace-nowrap"><span class="js-price" data-monthly="$49/mo" data-annual="$588/yr">$49/mo</span></td>
+            </tr>
+            <tr class="border-b border-[#F5EFF6]">
+              <td class="py-3.5 px-5 sm:px-6 font-semibold text-ink">Email marketing</td>
+              <td class="py-3.5 px-5 sm:px-6 text-ink-muted">Mailchimp, ActiveCampaign</td>
+              <td class="py-3.5 px-5 sm:px-6 text-right text-ink-muted whitespace-nowrap"><span class="js-price" data-monthly="$99/mo" data-annual="$1,188/yr">$99/mo</span></td>
+            </tr>
+            <tr class="border-b border-[#F5EFF6]">
+              <td class="py-3.5 px-5 sm:px-6 font-semibold text-ink">2-way SMS marketing</td>
+              <td class="py-3.5 px-5 sm:px-6 text-ink-muted">Twilio, SimpleTexting</td>
+              <td class="py-3.5 px-5 sm:px-6 text-right text-ink-muted whitespace-nowrap"><span class="js-price" data-monthly="$99/mo" data-annual="$1,188/yr">$99/mo</span></td>
+            </tr>
+            <tr class="border-b border-[#F5EFF6]">
+              <td class="py-3.5 px-5 sm:px-6 font-semibold text-ink">Booking &amp; appointments</td>
+              <td class="py-3.5 px-5 sm:px-6 text-ink-muted">Calendly, Acuity</td>
+              <td class="py-3.5 px-5 sm:px-6 text-right text-ink-muted whitespace-nowrap"><span class="js-price" data-monthly="$29/mo" data-annual="$348/yr">$29/mo</span></td>
+            </tr>
+            <tr class="border-b border-[#F5EFF6]">
+              <td class="py-3.5 px-5 sm:px-6 font-semibold text-ink">Workflow automations</td>
+              <td class="py-3.5 px-5 sm:px-6 text-ink-muted">Zapier, Make</td>
+              <td class="py-3.5 px-5 sm:px-6 text-right text-ink-muted whitespace-nowrap"><span class="js-price" data-monthly="$169/mo" data-annual="$2,028/yr">$169/mo</span></td>
+            </tr>
+            <tr class="border-b border-[#F5EFF6]">
+              <td class="py-3.5 px-5 sm:px-6 font-semibold text-ink">Courses &amp; products</td>
+              <td class="py-3.5 px-5 sm:px-6 text-ink-muted">Kajabi, Teachable</td>
+              <td class="py-3.5 px-5 sm:px-6 text-right text-ink-muted whitespace-nowrap"><span class="js-price" data-monthly="$159/mo" data-annual="$1,908/yr">$159/mo</span></td>
+            </tr>
+            <tr class="border-b border-[#F5EFF6]">
+              <td class="py-3.5 px-5 sm:px-6 font-semibold text-ink">Call tracking</td>
+              <td class="py-3.5 px-5 sm:px-6 text-ink-muted">CallRail</td>
+              <td class="py-3.5 px-5 sm:px-6 text-right text-ink-muted whitespace-nowrap"><span class="js-price" data-monthly="$95/mo" data-annual="$1,140/yr">$95/mo</span></td>
+            </tr>
+            <tr class="border-b border-[#F5EFF6]">
+              <td class="py-3.5 px-5 sm:px-6 font-semibold text-ink">Reputation management</td>
+              <td class="py-3.5 px-5 sm:px-6 text-ink-muted">Birdeye, Podium</td>
+              <td class="py-3.5 px-5 sm:px-6 text-right text-ink-muted whitespace-nowrap"><span class="js-price" data-monthly="$299/mo" data-annual="$3,588/yr">$299/mo</span></td>
+            </tr>
+            <tr class="border-b border-[#F5EFF6]">
+              <td class="py-3.5 px-5 sm:px-6 font-semibold text-ink">Tracking &amp; analytics</td>
+              <td class="py-3.5 px-5 sm:px-6 text-ink-muted">Whatagraph, AgencyAnalytics</td>
+              <td class="py-3.5 px-5 sm:px-6 text-right text-ink-muted whitespace-nowrap"><span class="js-price" data-monthly="$49/mo" data-annual="$588/yr">$49/mo</span></td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr style="background: linear-gradient(262.64deg, #A232C8 2%, #ED3176 98.09%);">
+              <td class="p-0" colspan="3">
+                <div class="flex items-center justify-between gap-3 py-5 px-5 sm:px-6">
+                  <span class="font-display font-bold text-white text-base">Overall price</span>
+                  <div class="js-price font-display font-bold text-white text-xl whitespace-nowrap" data-monthly="$1,472/mo" data-annual="$17,664/yr">$1,472/mo</div>
+                </div>
+              </td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    </div>
+
+    <p class="text-center text-sm text-ink-muted mt-6">Typical published list prices for comparable tools. Add setup fees, integration headaches and a stack of separate logins on top. Neuron replaces the lot — one system, one login, one bill.</p>
+
+    <div class="text-center mt-10">
+      <a href="#pricing" class="btn-gradient-border inline-flex items-center justify-center gap-2 rounded-full px-7 py-3.5 font-semibold">
+        See Neuron pricing <i class="ph-bold ph-arrow-right"></i>
+      </a>
+    </div>
+  </div>
+</section>
+
 <!-- ====================== PRICING ====================== -->
 <section
   id="pricing"
@@ -716,8 +839,20 @@
 >
   <div class="max-w-7xl mx-auto px-6 lg:px-10 py-24">
     <div class="text-center max-w-2xl mx-auto mb-14">
-      <h2 class="font-display text-4xl sm:text-5xl font-bold mb-5">One plan. Everything handled.</h2>
+      <h2 class="font-display text-4xl sm:text-5xl font-bold mb-5">One plan.<br>Everything handled.</h2>
       <p class="text-ink-muted text-lg">Pick the level that fits where your business is. No upfront cost to get started, no lock-in — just a system that pays for itself in booked jobs.</p>
+    </div>
+
+    <!-- Billing toggle -->
+    <div class="flex items-center justify-center gap-4 mb-12" id="billing-toggle">
+      <span class="js-bill-monthly font-semibold text-ink transition">Monthly</span>
+      <button type="button" role="switch" aria-checked="false" aria-label="Switch to annual billing" data-billing-switch
+        class="relative inline-flex h-7 w-14 shrink-0 items-center rounded-full bg-ink/20 transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+        id="billing-switch">
+        <span class="js-knob inline-block h-5 w-5 translate-x-1 rounded-full bg-white shadow transition-transform duration-200"></span>
+      </button>
+      <span class="js-bill-annual font-semibold text-ink-muted transition">Annual</span>
+      <span class="inline-flex items-center rounded-full bg-accent px-3 py-1 text-xs font-semibold text-ink">2 months free</span>
     </div>
 
     <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-0 items-center">
@@ -726,9 +861,12 @@
       <div class="card-soft p-10 flex flex-col relative z-10 lg:self-center">
         <h3 class="font-display text-2xl font-bold">Website only</h3>
         <p class="text-ink-muted mt-1 mb-5">Get online with a site that's done for you</p>
-        <div class="flex items-end gap-1 mb-6">
-          <span class="font-display text-5xl font-extrabold text-ink">$97</span>
-          <span class="text-ink-muted font-medium mb-1.5">/month</span>
+        <div class="mb-6">
+          <div class="flex items-end gap-1">
+            <span class="js-price font-display text-5xl font-extrabold text-ink" data-monthly="$97" data-annual="$970">$97</span>
+            <span class="js-period text-ink-muted font-medium mb-1.5">/month</span>
+          </div>
+          <p class="js-bill-note text-xs text-ink-muted mt-1.5 hidden">$970 billed annually — 2 months free</p>
         </div>
         <a href="https://link.neuroncrm.ai/payment-link/6a28a7d371a0aa761e463ebc" target="_blank" rel="noopener" class="btn-outline inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 font-semibold mb-8">
           Get started <i class="ph-bold ph-arrow-right"></i>
@@ -742,12 +880,15 @@
       </div>
 
       <!-- STARTER -->
-      <div class="card-soft p-10 flex flex-col h-full relative z-20 lg:-ml-4 shadow-xl">
+      <div class="card-tinted p-10 flex flex-col h-full relative z-20 lg:-ml-4 shadow-xl">
         <h3 class="font-display text-2xl font-bold">Starter</h3>
         <p class="text-ink-muted mt-1 mb-5">Get online &amp; never miss a lead</p>
-        <div class="flex items-end gap-1 mb-6">
-          <span class="font-display text-5xl font-extrabold text-ink">$147</span>
-          <span class="text-ink-muted font-medium mb-1.5">/month</span>
+        <div class="mb-6">
+          <div class="flex items-end gap-1">
+            <span class="js-price font-display text-5xl font-extrabold text-ink" data-monthly="$147" data-annual="$1,470">$147</span>
+            <span class="js-period text-ink-muted font-medium mb-1.5">/month</span>
+          </div>
+          <p class="js-bill-note text-xs text-ink-muted mt-1.5 hidden">$1,470 billed annually — 2 months free</p>
         </div>
         <a href="https://link.launchexperts.co/payment-link/69f42e8db615f70a8a33acf8" target="_blank" rel="noopener" class="btn-outline inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 font-semibold mb-8">
           Get started <i class="ph-bold ph-arrow-right"></i>
@@ -767,9 +908,12 @@
         <span class="absolute -top-3 left-1/2 -translate-x-1/2 text-xs font-semibold px-4 py-1.5 rounded-full shadow-soft bg-accent text-ink">Most Popular</span>
         <h3 class="font-display text-2xl font-bold">Growth</h3>
         <p class="text-ink-muted mt-1 mb-5">Turn enquiries into booked jobs</p>
-        <div class="flex items-end gap-1 mb-6">
-          <span class="font-display text-5xl font-extrabold text-ink">$197</span>
-          <span class="text-ink-muted font-medium mb-1.5">/month</span>
+        <div class="mb-6">
+          <div class="flex items-end gap-1">
+            <span class="js-price font-display text-5xl font-extrabold text-ink" data-monthly="$197" data-annual="$1,970">$197</span>
+            <span class="js-period text-ink-muted font-medium mb-1.5">/month</span>
+          </div>
+          <p class="js-bill-note text-xs text-ink-muted mt-1.5 hidden">$1,970 billed annually — 2 months free</p>
         </div>
         <a href="https://link.launchexperts.co/payment-link/6a7af4f673c7ff66b05e7966" target="_blank" rel="noopener" style="color:#0B0A1F" class="inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 font-semibold mb-8 bg-white shadow-soft hover:brightness-95 transition">
           Get started <i class="ph-bold ph-arrow-right"></i>
@@ -786,12 +930,15 @@
       </div>
 
       <!-- PREMIUM -->
-      <div class="card-soft p-10 flex flex-col h-full relative z-10">
+      <div class="card-tinted p-10 flex flex-col h-full relative z-10">
         <h3 class="font-display text-2xl font-bold">Premium</h3>
         <p class="text-ink-muted mt-1 mb-5">Never miss a call. We handle the rest</p>
-        <div class="flex items-end gap-1 mb-6">
-          <span class="font-display text-5xl font-extrabold text-ink">$297</span>
-          <span class="text-ink-muted font-medium mb-1.5">/month</span>
+        <div class="mb-6">
+          <div class="flex items-end gap-1">
+            <span class="js-price font-display text-5xl font-extrabold text-ink" data-monthly="$297" data-annual="$2,970">$297</span>
+            <span class="js-period text-ink-muted font-medium mb-1.5">/month</span>
+          </div>
+          <p class="js-bill-note text-xs text-ink-muted mt-1.5 hidden">$2,970 billed annually — 2 months free</p>
         </div>
         <a href="https://link.launchexperts.co/payment-link/6a7af53373c7ff66b05e7967" target="_blank" rel="noopener" class="btn-outline inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 font-semibold mb-8">
           Get started <i class="ph-bold ph-arrow-right"></i>
@@ -1055,6 +1202,81 @@
     } else {
       play();
     }
+  })();
+</script>
+
+<script>
+  (function () {
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // Split "from $1,470/yr" -> {prefix:"from $", num:1470, suffix:"/yr"}
+    function parseValue(str) {
+      var m = String(str).match(/^(.*?)([\d][\d,]*)(.*)$/);
+      if (!m) return null;
+      return { prefix: m[1], num: parseInt(m[2].replace(/,/g, ''), 10), suffix: m[3] };
+    }
+    function withCommas(n) { return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','); }
+
+    function animateValue(el, toStr) {
+      var target = parseValue(toStr);
+      if (!target) { el.textContent = toStr; return; }
+      var current = parseValue(el.textContent);
+      var from = current ? current.num : target.num;
+      if (reduce || from === target.num) {
+        el.textContent = target.prefix + withCommas(target.num) + target.suffix;
+        return;
+      }
+      if (el._raf) cancelAnimationFrame(el._raf);
+      var start = null, dur = 550;
+      function step(ts) {
+        if (start === null) start = ts;
+        var p = Math.min((ts - start) / dur, 1);
+        var eased = 1 - Math.pow(1 - p, 3);
+        var val = Math.round(from + (target.num - from) * eased);
+        el.textContent = target.prefix + withCommas(val) + target.suffix;
+        if (p < 1) el._raf = requestAnimationFrame(step);
+        else el.textContent = target.prefix + withCommas(target.num) + target.suffix;
+      }
+      el._raf = requestAnimationFrame(step);
+    }
+
+    var switches = document.querySelectorAll('[data-billing-switch]');
+    switches.forEach(function (sw) {
+      var root = sw.closest('section') || document;
+      var knob = sw.querySelector('.js-knob');
+      var lblMonthly = root.querySelector('.js-bill-monthly');
+      var lblAnnual = root.querySelector('.js-bill-annual');
+      var prices = root.querySelectorAll('.js-price');
+      var periods = root.querySelectorAll('.js-period');
+      var notes = root.querySelectorAll('.js-bill-note');
+
+      function setAnnual(annual) {
+        sw.setAttribute('aria-checked', annual ? 'true' : 'false');
+        sw.classList.toggle('bg-accent', annual);
+        sw.classList.toggle('bg-ink/20', !annual);
+        if (knob) {
+          knob.classList.toggle('translate-x-8', annual);
+          knob.classList.toggle('translate-x-1', !annual);
+        }
+        if (lblMonthly) {
+          lblMonthly.classList.toggle('text-ink', !annual);
+          lblMonthly.classList.toggle('text-ink-muted', annual);
+        }
+        if (lblAnnual) {
+          lblAnnual.classList.toggle('text-ink', annual);
+          lblAnnual.classList.toggle('text-ink-muted', !annual);
+        }
+        prices.forEach(function (el) {
+          animateValue(el, annual ? el.getAttribute('data-annual') : el.getAttribute('data-monthly'));
+        });
+        periods.forEach(function (el) { el.textContent = annual ? '/year' : '/month'; });
+        notes.forEach(function (el) { el.classList.toggle('hidden', !annual); });
+      }
+
+      sw.addEventListener('click', function () {
+        setAnnual(sw.getAttribute('aria-checked') !== 'true');
+      });
+    });
   })();
 </script>
 
