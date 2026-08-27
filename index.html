@@ -868,7 +868,7 @@
           </div>
           <p class="js-bill-note text-xs text-ink-muted mt-1.5 hidden">$970 billed annually — 2 months free</p>
         </div>
-        <a href="https://link.neuroncrm.ai/payment-link/6a28a7d371a0aa761e463ebc" target="_blank" rel="noopener" class="btn-outline inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 font-semibold mb-8">
+        <a href="https://link.neuroncrm.ai/payment-link/6a28a7d371a0aa761e463ebc" data-monthly-link="https://link.neuroncrm.ai/payment-link/6a28a7d371a0aa761e463ebc" data-annual-link="https://link.neuroncrm.ai/payment-link/6a9017add6768df054448445" target="_blank" rel="noopener" class="js-buy-link btn-outline inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 font-semibold mb-8">
           Get started <i class="ph-bold ph-arrow-right"></i>
         </a>
         <ul class="space-y-3.5 text-sm">
@@ -890,7 +890,7 @@
           </div>
           <p class="js-bill-note text-xs text-ink-muted mt-1.5 hidden">$1,470 billed annually — 2 months free</p>
         </div>
-        <a href="https://link.launchexperts.co/payment-link/69f42e8db615f70a8a33acf8" target="_blank" rel="noopener" class="btn-outline inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 font-semibold mb-8">
+        <a href="https://link.neuroncrm.ai/payment-link/69f42e8db615f70a8a33acf8" data-monthly-link="https://link.neuroncrm.ai/payment-link/69f42e8db615f70a8a33acf8" data-annual-link="https://link.neuroncrm.ai/payment-link/6a9014adf9c8c807930ba57a" target="_blank" rel="noopener" class="js-buy-link btn-outline inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 font-semibold mb-8">
           Get started <i class="ph-bold ph-arrow-right"></i>
         </a>
         <ul class="space-y-3.5 text-sm">
@@ -915,7 +915,7 @@
           </div>
           <p class="js-bill-note text-xs text-ink-muted mt-1.5 hidden">$1,970 billed annually — 2 months free</p>
         </div>
-        <a href="https://link.launchexperts.co/payment-link/6a7af4f673c7ff66b05e7966" target="_blank" rel="noopener" style="color:#0B0A1F" class="inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 font-semibold mb-8 bg-white shadow-soft hover:brightness-95 transition">
+        <a href="https://link.neuroncrm.ai/payment-link/6a7af4f673c7ff66b05e7966" data-monthly-link="https://link.neuroncrm.ai/payment-link/6a7af4f673c7ff66b05e7966" data-annual-link="https://link.neuroncrm.ai/payment-link/6a9015f7f9c8c807930ba580" target="_blank" rel="noopener" style="color:#0B0A1F" class="js-buy-link inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 font-semibold mb-8 bg-white shadow-soft hover:brightness-95 transition">
           Get started <i class="ph-bold ph-arrow-right"></i>
         </a>
         <p class="text-sm font-semibold text-ink mb-4">Everything in Starter, plus:</p>
@@ -940,7 +940,7 @@
           </div>
           <p class="js-bill-note text-xs text-ink-muted mt-1.5 hidden">$2,970 billed annually — 2 months free</p>
         </div>
-        <a href="https://link.launchexperts.co/payment-link/6a7af53373c7ff66b05e7967" target="_blank" rel="noopener" class="btn-outline inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 font-semibold mb-8">
+        <a href="https://link.neuroncrm.ai/payment-link/6a7af53373c7ff66b05e7967" data-monthly-link="https://link.neuroncrm.ai/payment-link/6a7af53373c7ff66b05e7967" data-annual-link="https://link.neuroncrm.ai/payment-link/6a901653f9c8c807930ba581" target="_blank" rel="noopener" class="js-buy-link btn-outline inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 font-semibold mb-8">
           Get started <i class="ph-bold ph-arrow-right"></i>
         </a>
         <p class="text-sm font-semibold text-ink mb-4">Everything in Growth, plus:</p>
@@ -1249,6 +1249,7 @@
       var prices = root.querySelectorAll('.js-price');
       var periods = root.querySelectorAll('.js-period');
       var notes = root.querySelectorAll('.js-bill-note');
+      var buyLinks = root.querySelectorAll('.js-buy-link');
 
       function setAnnual(annual) {
         sw.setAttribute('aria-checked', annual ? 'true' : 'false');
@@ -1271,6 +1272,10 @@
         });
         periods.forEach(function (el) { el.textContent = annual ? '/year' : '/month'; });
         notes.forEach(function (el) { el.classList.toggle('hidden', !annual); });
+        buyLinks.forEach(function (el) {
+          var url = annual ? el.getAttribute('data-annual-link') : el.getAttribute('data-monthly-link');
+          if (url) { el.setAttribute('href', url); }
+        });
       }
 
       sw.addEventListener('click', function () {
